@@ -333,8 +333,8 @@ h2 {
 .fp-rule { height: 2px; background: var(--ink); transform-origin: 0 50%; }
 .fp-rule--double { height: 6px; background: none; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
 .fp-title {
-  margin: 0.12em 0 0.1em;
-  font: 800 min(9.4vw, 15svh)/0.98 var(--f-cond);
+  margin: 0.34em 0 0.14em;
+  font: 800 min(9.4vw, 15svh)/1.12 var(--f-cond);
   font-stretch: 72%;
   text-transform: uppercase;
   letter-spacing: -0.015em;
@@ -957,6 +957,8 @@ h2 {
   .site-header { grid-template-columns: 1fr auto; }
 
   .fp-title { font-size: min(12.4vw, 15svh); }
+  .fp-top { font-size: 0.7rem; letter-spacing: 0.08em; gap: 0.6rem; }
+  .fp-top span { white-space: nowrap; }
   .hero-body { grid-template-columns: 1fr; gap: 2.6rem; }
   .hero-prints { height: min(64vw, 380px); margin-bottom: 1.6rem; }
 
