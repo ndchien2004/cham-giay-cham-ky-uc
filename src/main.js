@@ -650,8 +650,9 @@ if (animate) {
   });
 
   /* ----- Tờ báo gập lại ở phần kết ----- */
-  gsap.fromTo(".fold-half--bottom", { rotationX: 0, filter: "brightness(1)" }, {
-    rotationX: 172, filter: "brightness(0.7)", ease: "none",
+  // Không dùng filter ở đây: filter làm phẳng 3D nên mặt sau sẽ lộ chữ ngược
+  gsap.fromTo(".fold-half--bottom", { rotationX: 0 }, {
+    rotationX: 172, ease: "none",
     scrollTrigger: { trigger: ".fold-stage", start: "top 70%", end: "bottom 25%", scrub: true },
   });
 
