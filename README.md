@@ -1,7 +1,7 @@
 # Chạm giấy – Chạm ký ức · Mega Story
 
 Trang longform cuộn dọc về cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số,
-dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại Hà Nội năm 2026 (288 người).
+dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại khu vực Hà Nội năm 2026 (288 người).
 
 Bố cục theo bản nội dung mới: Mở đầu · 01 Nối (đời sống) · 02 Thưa (79,5%) · 03 Đổi (người trẻ,
 khoảng cách thế hệ) · 04 Chậm (đọc chậm, ký ức, người bán báo) · 05 Mở (Điện Biên Phủ, tương lai) · Kết.
