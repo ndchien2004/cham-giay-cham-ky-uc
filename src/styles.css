@@ -942,7 +942,7 @@ h2 {
   padding-bottom: clamp(2rem, 5vw, 4rem); border-bottom: 1px solid var(--line);
 }
 .footer-title em { font-style: normal; color: var(--accent); }
-.footer-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding: 2.4rem 0; font-size: 1.1rem; line-height: 1.55; color: var(--muted); }
+.footer-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding: 2.4rem 0; font-size: 1.1rem; line-height: 1.55; color: var(--muted); }
 .footer-cols h4 { font: 600 0.86rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg); margin-bottom: 0.8rem; }
 .footer-cols li + li { margin-top: 0.3rem; }
 .back-top { display: inline-flex; gap: 0.5rem; font: 600 0.9rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0.8rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; }

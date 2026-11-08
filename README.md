@@ -80,4 +80,3 @@ Trang có một video duy nhất: phóng sự "Văn hóa đọc báo giấy" (`#
 ## Việc còn lại
 
 - Giữ video YouTube ở chế độ "Không công khai" (không để "Riêng tư") và bật "Cho phép nhúng".
-- Mọi ảnh đang ghi "Ảnh: Sưu tầm".

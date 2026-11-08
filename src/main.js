@@ -493,7 +493,6 @@ if (animate) {
     .to(".fp-line > span", { yPercent: 0, duration: 1.2, stagger: 0.12 }, 0.2)
     .from([".fp-deck", ".fp-meta"], { autoAlpha: 0, y: 24, duration: 1, stagger: 0.1 }, 0.6)
     .from(".print", { autoAlpha: 0, yPercent: 40, scale: 0.92, duration: 1.3, stagger: 0.12 }, 0.45)
-    .from(".hero-prints figcaption", { autoAlpha: 0, duration: 0.8 }, 1.1)
     .from(".ticker", { autoAlpha: 0, duration: 0.8 }, 0.9);
 
   // Khi cuộn: hai dòng tít trượt ngược chiều, ảnh in trôi lệch nhau
