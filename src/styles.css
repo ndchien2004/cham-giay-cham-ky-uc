@@ -1064,7 +1064,7 @@ h2 {
 .turn[data-prev="forest"] { --leaf-bg: var(--forest); --leaf-ink: rgba(242, 236, 219, 0.14); --leaf-strong: rgba(242, 236, 219, 0.7); --edge: #1c4126; }
 
 .anim .chapter:has(> .turn), .anim .ending:has(> .turn) { padding-top: 0; }
-.anim .turn { height: 220vh; height: 220svh; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.anim .turn { height: 220vh; height: 220svh; } /* margin-bottom âm do JS tính theo dải trống dưới trang mở */
 .anim .turn-stage {
   position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
   perspective: 1800px;
@@ -1280,3 +1280,17 @@ h2 {
 @media (max-width: 520px) {
   .memory { grid-template-columns: 1fr; }
 }
+
+/* Màn hình thấp (laptop nhỏ): thu gọn trang mở chương để vừa một màn hình */
+@media (min-width: 901px) and (max-height: 760px) {
+  .opener-toc { display: none; }
+  .opener-copy h2 { font-size: clamp(1.6rem, 1rem + 2vw, 2.6rem); }
+  .opener-sub { font-size: 1.15rem; }
+  .opener-photo img { height: 54vh; }
+  .opener-side .cover-print img { max-height: 52vh; width: auto; margin: 0 auto; }
+  .opener-stat > b { font-size: clamp(3rem, 2rem + 3vw, 5rem); }
+  .opener-numbers li { padding: 0.6rem 0; }
+}
+
+/* Khối đứng ngay sau trang mở chương không cần lề trên riêng */
+.turn + .stat-strip, .turn + .prose, .turn + .lead-solo { margin-top: 0; }

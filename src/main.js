@@ -546,6 +546,16 @@ if (animate) {
     });
   });
 
+  /* ----- Kéo nội dung sau trang mở chương lên dải nền trống bên dưới (không chạm chữ) ----- */
+  const fitTurns = () => $$(".turn").forEach((t) => {
+    const sp = $(".turn-spread", t);
+    const hd = $("header", sp);
+    const gap = sp.offsetHeight - (hd.offsetTop + hd.offsetHeight);
+    t.style.marginBottom = -Math.max(0, gap - 32) + "px";
+  });
+  fitTurns();
+  ScrollTrigger.addEventListener("refreshInit", fitTurns);
+
   /* ----- Lật trang: tờ báo lùi ra, trang phải lật qua gáy, lộ trang mở chương ----- */
   $$(".turn").forEach((turn) => {
     const spread = $(".turn-spread", turn);
