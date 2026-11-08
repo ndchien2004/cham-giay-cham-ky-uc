@@ -68,10 +68,10 @@ let lastY = window.scrollY;
 
 function refreshTone() {
   const probe = headerH() / 2;
-  const el = toneEls.find((s) => {
+  const el = toneEls.filter((s) => {
     const r = s.getBoundingClientRect();
     return r.top <= probe && r.bottom > probe;
-  });
+  }).pop();
   const tone = el ? el.dataset.tone : "paper";
   header.classList.toggle("on-moss", tone === "moss");
   header.classList.toggle("on-forest", tone === "forest");
@@ -520,6 +520,7 @@ if (animate) {
   /* ----- Tiêu đề: từng chữ hiện lên ----- */
   $$(".split").forEach((el) => {
     const words = splitWords(el);
+    if (el.closest(".turn")) return; // tiêu đề đầu chương chạy theo nhịp lật trang
     gsap.from(words, {
       yPercent: 60, autoAlpha: 0, filter: "blur(8px)",
       stagger: 0.035, duration: 1.1, ease: "expo.out",
@@ -559,27 +560,32 @@ if (animate) {
     });
   });
 
-  /* ----- Mở chương: động từ giãn ngang theo cuộn ----- */
-  $$(".opener").forEach((op) => {
-    const verb = $(".opener-verb", op);
-    gsap.fromTo(verb, { "--wdth": 62 }, {
-      "--wdth": 112, ease: "none",
-      scrollTrigger: { trigger: op, start: "top 85%", end: "top 15%", scrub: true },
+  /* ----- Lật trang: trang của phần trước lật sang trái, lộ trang mở chương ----- */
+  $$(".turn").forEach((turn) => {
+    const leaf = $(".turn-leaf", turn);
+    const head = $(".opener, .intro-head", turn);
+    const verb = $(".opener-verb", head);
+    const words = $$(".split .word", head);
+    const prevTone = turn.dataset.tone;
+    const ownTone = turn.closest("[data-chapter]").dataset.tone;
+    const tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: {
+        trigger: turn,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.6,
+        onUpdate: (self) => {
+          turn.style.setProperty("--p", self.progress.toFixed(3));
+          const t = self.progress < 0.5 ? prevTone : ownTone;
+          if (turn.dataset.tone !== t) { turn.dataset.tone = t; refreshTone(); }
+        },
+      },
     });
-    gsap.from(verb, { yPercent: 40, autoAlpha: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: op, start: "top 85%", once: true } });
-    gsap.fromTo($(".opener-num", op), { yPercent: 30 }, {
-      yPercent: -30, ease: "none",
-      scrollTrigger: { trigger: op, start: "top bottom", end: "bottom top", scrub: true },
-    });
-    gsap.from($$(".kicker, .opener-sub", op), { y: 20, autoAlpha: 0, stagger: 0.1, duration: 1, ease: "expo.out", scrollTrigger: { trigger: op, start: "top 75%", once: true } });
-  });
-
-  /* ----- Nền tối/đỏ của chương mở rộng từ thẻ bo góc ra toàn màn hình ----- */
-  $$(".tone-bg").forEach((bg) => {
-    gsap.fromTo(bg, { clipPath: "inset(0% 3.5% 0% 3.5% round 40px)" }, {
-      clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "none",
-      scrollTrigger: { trigger: bg.parentElement, start: "top bottom", end: "top 15%", scrub: true },
-    });
+    tl.fromTo(leaf, { rotationY: 0 }, { rotationY: -180, duration: 1, ease: "power1.inOut" }, 0);
+    if (verb) tl.fromTo(verb, { "--wdth": 62, yPercent: 30, autoAlpha: 0 }, { "--wdth": 112, yPercent: 0, autoAlpha: 1, duration: 0.7 }, 0.3);
+    tl.from($$(".kicker, .opener-sub, .opener-num", head), { y: 24, autoAlpha: 0, stagger: 0.05, duration: 0.3 }, 0.45);
+    if (words.length) tl.from(words, { yPercent: 60, autoAlpha: 0, stagger: 0.02, duration: 0.3 }, 0.5);
   });
 
   /* ----- Khảo sát: thanh chia nhóm ----- */
