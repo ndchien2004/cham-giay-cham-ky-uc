@@ -38,7 +38,7 @@ public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 |---|---|---|
 | Hero | Trang nhất + xấp ảnh in | Tít và ảnh hiện dần; khi cuộn, hai dòng tít trượt ngược chiều, ảnh trôi lệch nhau; dải số liệu chạy ngang |
 | Mở đầu | Thẻ khảo sát 288 = 156 + 132 | Số đếm |
-| Đầu mỗi chương | Lật trang | Trang của phần trước lật sang trái (3D, theo cuộn), lộ trang mở chương; khối `.turn` |
+| Đầu mỗi chương | Lật trang | Tờ báo của phần trước lùi ra trên mặt bàn, trang phải lật qua gáy giữa (3D, theo cuộn); mặt sau là nửa trái trang mở chương; khối `.turn` |
 | Phần 01 | Chồng báo (1 tờ = 10 triệu bản) | Scrollytelling 3 bước: 1,1 tỷ → 250 triệu (−77%) |
 | Phần 02 | 156 ô, mỗi ô một người | 3 bước; có bảng số liệu và tooltip |
 | Phần 02 | Kéo so sánh Giấy ↔ Màn hình | Dùng được bằng bàn phím (thanh trượt) |

@@ -547,32 +547,43 @@ if (animate) {
     });
   });
 
-  /* ----- Lật trang: trang của phần trước lật sang trái, lộ trang mở chương ----- */
+  /* ----- Lật trang: tờ báo lùi ra, trang phải lật qua gáy, lộ trang mở chương ----- */
   $$(".turn").forEach((turn) => {
+    const spread = $(".turn-spread", turn);
     const leaf = $(".turn-leaf", turn);
     const head = $(".opener, .intro-head", turn);
     const verb = $(".opener-verb", head);
-    const words = $$(".split .word", head);
+    // Mặt sau của trang lật là bản sao trang mở chương, chỉ nửa trái lộ ra
+    // (bọc trong khung rộng bằng cả trang để bản sao căn đúng như bản thật)
+    const clone = head.cloneNode(true);
+    clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
+    const cloneWrap = document.createElement("div");
+    cloneWrap.className = "leaf-clone";
+    cloneWrap.setAttribute("aria-hidden", "true");
+    cloneWrap.appendChild(clone);
+    $(".leaf-back", turn).appendChild(cloneWrap);
+
     const prevTone = turn.dataset.tone;
     const ownTone = turn.closest("[data-chapter]").dataset.tone;
+    const FLIP_START = 0.1;
+    const FLIP_END = 0.8;
     const tl = gsap.timeline({
       defaults: { ease: "none" },
-      scrollTrigger: {
-        trigger: turn,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0.6,
-        onUpdate: (self) => {
-          turn.style.setProperty("--p", self.progress.toFixed(3));
-          const t = self.progress < 0.5 ? prevTone : ownTone;
-          if (turn.dataset.tone !== t) { turn.dataset.tone = t; refreshTone(); }
-        },
+      scrollTrigger: { trigger: turn, start: "top top", end: "bottom bottom", scrub: 0.8 },
+      onUpdate: () => {
+        // ánh sáng, bóng và tông header bám theo góc lật thực tế của trang
+        const f = Math.min(1, Math.max(0, -gsap.getProperty(leaf, "rotationY") / 180));
+        turn.style.setProperty("--f", f.toFixed(3));
+        turn.classList.toggle("is-done", f >= 0.999);
+        const t = f < 0.5 ? prevTone : ownTone;
+        if (turn.dataset.tone !== t) { turn.dataset.tone = t; refreshTone(); }
       },
     });
-    tl.fromTo(leaf, { rotationY: 0 }, { rotationY: -180, duration: 1, ease: "power1.inOut" }, 0);
-    if (verb) tl.fromTo(verb, { "--wdth": 62, yPercent: 30, autoAlpha: 0 }, { "--wdth": 112, yPercent: 0, autoAlpha: 1, duration: 0.7 }, 0.3);
-    tl.from($$(".kicker, .opener-sub, .opener-num", head), { y: 24, autoAlpha: 0, stagger: 0.05, duration: 0.3 }, 0.45);
-    if (words.length) tl.from(words, { yPercent: 60, autoAlpha: 0, stagger: 0.02, duration: 0.3 }, 0.5);
+    const far = () => (isSmall() ? 0.88 : 0.8);
+    tl.to(spread, { scale: far, rotationX: 9, y: () => -window.innerHeight * 0.02, duration: 0.32, ease: "power2.out" }, 0)
+      .fromTo(leaf, { rotationY: 0, z: 1 }, { rotationY: -180, z: 1, duration: FLIP_END - FLIP_START, ease: "power2.inOut" }, FLIP_START)
+      .to(spread, { scale: 1, rotationX: 0, y: 0, duration: 0.3, ease: "power2.inOut" }, FLIP_END - 0.24);
+    if (verb) tl.fromTo(verb, { "--wdth": 62 }, { "--wdth": 112, duration: 1 - FLIP_END - 0.04 }, FLIP_END + 0.04);
   });
 
   /* ----- Khảo sát: thanh chia nhóm ----- */
