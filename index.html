@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0f14">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số: một Mega Story dựa trên hai cuộc khảo sát với 288 người tại Hà Nội năm 2026.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Chạm giấy – Chạm ký ức · Mega Story">
+  <meta property="og:description" content="Cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số.">
+  <meta property="og:locale" content="vi_VN">
+  <title>Chạm giấy – Chạm ký ức</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.classList.add('anim');
+        // An toàn: nếu script chính lỗi, vẫn hiện nội dung
+        setTimeout(function () { if (!window.__storyReady) d.classList.remove('anim'); }, 3500);
+      }
+    })();
+  </script>
+  <script type="module" src="./src/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#mo-dau">Bỏ qua phần mở đầu</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="chart-tip" id="chartTip" role="status" aria-live="polite"></div>
+
+  <!-- ================================================================ HEADER -->
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="#top" aria-label="Về đầu trang">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">Chạm giấy<small>Mega Story · 2026</small></span>
+    </a>
+    <p class="header-now" aria-hidden="true"><span id="nowNum">00</span><span id="nowLabel">Mở đầu</span></p>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="menu-btn-label">Mục lục</span>
+      <span class="menu-btn-icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <div class="read-progress" aria-hidden="true"><i id="readBar"></i></div>
+  </header>
+
+  <nav class="menu" id="menu" aria-label="Mục lục bài viết" hidden>
+    <div class="menu-inner">
+      <p class="menu-kicker">Mục lục · 12 phút đọc</p>
+      <ol class="menu-list">
+        <li><a href="#mo-dau" data-nav="mo-dau"><i>00</i><b>Mở đầu</b><span>Một tờ báo giữa thời đại màn hình</span></a></li>
+        <li><a href="#chapter-1" data-nav="chapter-1"><i>01</i><b>Thưa</b><span>Khi những trang báo dần thưa vắng</span></a></li>
+        <li><a href="#chapter-2" data-nav="chapter-2"><i>02</i><b>Giữ</b><span>Những người vẫn tìm đến trang giấy</span></a></li>
+        <li><a href="#chapter-3" data-nav="chapter-3"><i>03</i><b>Nối</b><span>Từ một tờ báo đến những kết nối đời thường</span></a></li>
+        <li><a href="#chapter-4" data-nav="chapter-4"><i>04</i><b>Tò mò</b><span>Người trẻ nhìn báo giấy bằng ánh mắt nào?</span></a></li>
+        <li><a href="#chapter-5" data-nav="chapter-5"><i>05</i><b>Hướng</b><span>Những trang giấy sẽ đi về đâu?</span></a></li>
+        <li><a href="#ket" data-nav="ket"><i>06</i><b>Kết</b><span>Điều còn lại sau mỗi trang báo</span></a></li>
+      </ol>
+      <a class="menu-film" href="#phong-su"><span class="play-dot" aria-hidden="true"></span>Xem phóng sự</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ================================================================ HERO -->
+    <section class="hero" id="top" data-tone="screen">
+      <div class="hero-sticky">
+        <div class="hero-screen" aria-hidden="true">
+          <div class="screen-glow"></div>
+          <p class="screen-time"><b>06:30</b><small>Một buổi sáng bất kỳ</small></p>
+          <ul class="notifs">
+            <li class="notif" style="--x:-30;--y:-24;--r:-4"><span class="notif-app">Bảng tin</span><b>Tin mới cập nhật</b><span>Bạn có 12 thông báo chưa đọc</span><time>vừa xong</time></li>
+            <li class="notif" style="--x:26;--y:-30;--r:3"><span class="notif-app">Xu hướng</span><b>Đang được bàn luận</b><span>3,2 nghìn người đang theo dõi</span><time>1 phút</time></li>
+            <li class="notif" style="--x:-34;--y:14;--r:2"><span class="notif-app">Trực tiếp</span><b>Diễn biến mới nhất</b><span>Cuộn để xem thêm…</span><time>2 phút</time></li>
+            <li class="notif" style="--x:32;--y:8;--r:-3"><span class="notif-app">Đề xuất</span><b>5 bài viết dành cho bạn</b><span>Dựa trên lượt xem gần đây</span><time>4 phút</time></li>
+            <li class="notif" style="--x:-8;--y:34;--r:-2"><span class="notif-app">Video</span><b>Đang thịnh hành</b><span>Xem ngay trước khi bỏ lỡ</span><time>6 phút</time></li>
+            <li class="notif" style="--x:30;--y:30;--r:2"><span class="notif-app">Nhắc nhở</span><b>Đừng bỏ lỡ tin buổi sáng</b><span>Chạm để mở</span><time>7 phút</time></li>
+          </ul>
+          <p class="screen-line">Tin tức chỉ cách<br><em>một cú chạm</em> màn hình.</p>
+          <p class="screen-cue">Cuộn để chạm vào trang giấy <span>↓</span></p>
+        </div>
+
+        <div class="hero-paper">
+          <article class="fp">
+            <div class="fp-top">
+              <span>Số đặc biệt</span>
+              <span class="fp-top-mid">Hà Nội · 2026</span>
+              <span>Mega Story</span>
+            </div>
+            <div class="fp-rule"></div>
+            <h1 class="fp-title">
+              <span class="fp-line"><span>Chạm giấy</span></span>
+              <span class="fp-line fp-line--2"><span><em>–</em> Chạm ký ức</span></span>
+            </h1>
+            <div class="fp-rule fp-rule--double"></div>
+            <div class="fp-grid">
+              <p class="fp-deck">Cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số</p>
+              <figure class="fp-photo">
+                <img src="./images/ca-phe-bao-sang-700.webp" width="700" height="438" alt="Tờ báo in đặt trên bàn gỗ cạnh ly cà phê đá và bình hoa nhỏ.">
+                <figcaption>Một tờ báo, một ly cà phê buổi sáng. <span>Ảnh: Tư liệu</span></figcaption>
+              </figure>
+              <div class="fp-meta">
+                <span>288 người tham gia khảo sát</span>
+                <span>5 chương · 12 phút đọc</span>
+                <a class="fp-cta" href="#phong-su"><span class="play-dot" aria-hidden="true"></span>Xem phóng sự</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================ MỞ ĐẦU -->
+    <section class="section opening" id="mo-dau" data-chapter="mo-dau" data-num="00" data-label="Mở đầu" data-tone="paper">
+      <header class="intro-head">
+        <p class="kicker">Mở đầu</p>
+        <h2 class="split">Một tờ báo giữa thời đại màn hình</h2>
+      </header>
+
+      <p class="lead reveal">Giữa thời đại mà tin tức chỉ cách một cú chạm màn hình, vẫn có những người chọn bắt đầu ngày mới bằng việc mở một tờ báo. Có người tìm thấy trong đó nguồn thông tin đáng tin cậy, có người lưu giữ những trang giấy như một phần ký ức, cũng có người trẻ chỉ tình cờ biết đến báo in qua một ấn phẩm đặc biệt. Khi thói quen đọc thay đổi, điều gì vẫn khiến những trang giấy có chỗ đứng trong đời sống hôm nay?</p>
+
+      <div class="prose">
+        <p class="dropcap">Buổi sáng ở một quán cà phê, giữa những người đang chăm chú nhìn vào điện thoại, đôi khi vẫn xuất hiện hình ảnh một người chậm rãi mở tờ báo trên tay.</p>
+      </div>
+      <p class="scrub-text">Không có thông báo liên tục, không có những dòng tin tức cuộn mãi trên màn hình. Chỉ có tiếng lật giấy, những dòng chữ được đọc lần lượt và khoảng thời gian dành riêng cho việc tiếp nhận thông tin.</p>
+
+      <div class="prose">
+        <p>Đó từng là hình ảnh quen thuộc trong đời sống đô thị. Một tờ báo được mua trên đường đi làm, đặt cạnh ly cà phê hoặc chuyền tay giữa những thành viên trong gia đình. Có người đọc hết từng trang, có người chỉ tìm đến chuyên mục yêu thích, cũng có người giữ lại những số báo gắn với một sự kiện đáng nhớ.</p>
+        <p>Ngày nay, cách con người tiếp cận tin tức đã thay đổi. Điện thoại thông minh, mạng xã hội và báo điện tử giúp thông tin được cập nhật gần như tức thời. Việc đọc không còn phụ thuộc vào một ấn phẩm hay một thời điểm cố định.</p>
+        <p>Thế nhưng, sự thay đổi ấy không đồng nghĩa với việc báo giấy hoàn toàn biến mất khỏi đời sống công chúng. Với một bộ phận độc giả, những trang giấy vẫn mang đến trải nghiệm riêng mà màn hình khó có thể thay thế. Đó không chỉ là câu chuyện về phương tiện truyền thông, mà còn là câu chuyện về thói quen, ký ức và những kết nối được hình thành qua nhiều năm.</p>
+      </div>
+
+      <figure class="survey reveal" aria-labelledby="surveyCap">
+        <div class="survey-total">
+          <span class="kicker">Hai cuộc khảo sát · Hà Nội · 2026</span>
+          <strong class="count" data-to="288">288</strong>
+          <span>người tham gia</span>
+        </div>
+        <div class="survey-bar" role="img" aria-label="288 người tham gia: 156 người thuộc nhóm độc giả báo giấy, 132 người trẻ 15–30 tuổi.">
+          <div class="survey-seg survey-seg--a" style="--w:156"><b class="count" data-to="156">156</b><span>độc giả báo giấy</span></div>
+          <div class="survey-seg survey-seg--b" style="--w:132"><b class="count" data-to="132">132</b><span>người trẻ 15–30 tuổi</span></div>
+        </div>
+        <figcaption id="surveyCap">Để tìm hiểu sự thay đổi này, nhóm nghiên cứu tiến hành hai cuộc khảo sát trong năm 2026 tại khu vực Hà Nội với tổng cộng 288 người tham gia. Trong đó, 156 người thuộc nhóm khảo sát về độc giả báo giấy và 132 người trẻ trong độ tuổi 15–30.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Kết quả cho thấy báo giấy vẫn có những người tiếp tục tiếp xúc và gắn bó, trong khi phần lớn người trẻ chưa hình thành thói quen đọc thường xuyên. Nhưng đằng sau những con số ấy là một câu hỏi đáng suy ngẫm:</p>
+      </div>
+      <blockquote class="big-question reveal">
+        <p>Liệu giá trị của một tờ báo chỉ nằm ở lượng thông tin nó truyền tải, hay còn ở những trải nghiệm mà nó để lại cho người đọc?</p>
+      </blockquote>
+    </section>
+
+    <!-- ================================================================ CHƯƠNG 01 -->
+    <section class="section chapter tone-screen" id="chapter-1" data-chapter="chapter-1" data-num="01" data-label="Thưa" data-tone="screen">
+      <div class="tone-bg" aria-hidden="true"></div>
+      <header class="opener">
+        <span class="opener-num" aria-hidden="true">01</span>
+        <p class="opener-verb" aria-hidden="true">Thưa</p>
+        <div class="opener-copy">
+          <p class="kicker">Phần 01</p>
+          <h2 class="split">Khi những trang báo dần thưa vắng</h2>
+          <p class="opener-sub">Từ thói quen quen thuộc đến sự thay đổi của thời đại</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>Trong nhiều thập niên, báo in từng là một trong những phương tiện quan trọng giúp công chúng tiếp cận thông tin. Những sạp báo trên đường phố, tờ báo đặt trên bàn làm việc hay thói quen đọc báo buổi sáng đã trở thành một phần quen thuộc của đời sống.</p>
+        <p>Nhưng khi Internet và thiết bị di động phát triển, cách con người tìm kiếm và tiếp nhận tin tức cũng dần thay đổi. Một sự kiện có thể được cập nhật liên tục trên nhiều nền tảng, trong khi người đọc chỉ cần một chiếc điện thoại để tiếp cận hàng loạt nguồn thông tin khác nhau.</p>
+        <p>Sự chuyển dịch ấy được thể hiện rõ qua lượng phát hành báo in tại Việt Nam.</p>
+      </div>
+
+      <div class="scrolly" data-chart="stack">
+        <figure class="scrolly-figure" aria-labelledby="stackCap">
+          <div class="stack-head">
+            <p class="kicker">Lượng báo in phát hành</p>
+            <p class="stack-value"><b id="stackValue">1,1 tỷ</b><span id="stackYear">bản · 2013</span></p>
+            <p class="stack-badge" id="stackBadge">−77%</p>
+          </div>
+          <div class="stack" id="stack" role="img" aria-label="Lượng báo in phát hành tại Việt Nam: khoảng 1,1 tỷ bản năm 2013, còn khoảng 250 triệu bản năm 2022, giảm hơn 77%.">
+            <span class="stack-mark stack-mark--top"><b>2013</b> 1,1 tỷ bản</span>
+            <span class="stack-mark stack-mark--low"><b>2022</b> 250 triệu bản</span>
+          </div>
+          <figcaption id="stackCap"><span class="legend-sheet" aria-hidden="true"></span>Mỗi tờ = 10 triệu bản. Nguồn: Vietnam Media Landscape Report 2023–2024.</figcaption>
+        </figure>
+        <div class="scrolly-steps">
+          <div class="step" data-step="0"><div class="step-card">
+            <p class="step-year">2013</p>
+            <p>Theo <i>Vietnam Media Landscape Report 2023–2024</i>, lượng báo in phát hành từng đạt khoảng <b>1,1 tỷ bản</b> vào năm 2013.</p>
+          </div></div>
+          <div class="step" data-step="1"><div class="step-card">
+            <p class="step-year">2022</p>
+            <p>Đến năm 2022, con số này còn khoảng <b>250 triệu bản</b>, giảm hơn <b>77%</b> so với thời kỳ đỉnh cao được thống kê.</p>
+          </div></div>
+          <div class="step" data-step="2"><div class="step-card">
+            <p class="step-year">Còn lại</p>
+            <p>Cứ khoảng 4 tờ báo in phát hành năm 2013, đến năm 2022 chỉ còn chưa tới 1.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Sự thay đổi không chỉ nằm ở lượng phát hành. Theo Bộ Văn hóa, Thể thao và Du lịch, doanh thu báo và tạp chí in, điện tử năm 2024 ước đạt 8.080 tỷ đồng, giảm khoảng 6,1% so với năm trước. Đến năm 2025, doanh thu toàn khối cơ quan báo chí tiếp tục được ghi nhận ở mức khoảng 7.790 tỷ đồng.</p>
+      </div>
+
+      <div class="stat-pair">
+        <article class="stat-tile reveal">
+          <p class="stat-year">2024</p>
+          <p class="stat-num"><b class="count" data-to="8080">8.080</b><span>tỷ đồng</span></p>
+          <p class="stat-scope">Doanh thu báo và tạp chí in, điện tử (ước đạt)</p>
+          <p class="stat-delta">↓ khoảng 6,1% so với 2023</p>
+        </article>
+        <article class="stat-tile reveal">
+          <p class="stat-year">2025</p>
+          <p class="stat-num"><b class="count" data-to="7790">7.790</b><span>tỷ đồng</span></p>
+          <p class="stat-scope">Doanh thu toàn khối cơ quan báo chí</p>
+          <p class="stat-delta stat-delta--muted">Phạm vi thống kê khác năm 2024</p>
+        </article>
+        <p class="stat-source">Nguồn: Bộ Văn hóa, Thể thao và Du lịch. Hai con số đo hai phạm vi khác nhau nên không so sánh trực tiếp.</p>
+      </div>
+
+      <div class="prose">
+        <p>Những dữ kiện này cho thấy báo chí đang phải thích ứng với một môi trường truyền thông có nhiều thay đổi, từ hành vi công chúng đến mô hình kinh tế và phương thức phân phối nội dung.</p>
+        <p>Tuy nhiên, sự suy giảm của lượng phát hành không đồng nghĩa với việc mọi giá trị của báo giấy đều mất đi. Khi lợi thế về tốc độ không còn nổi bật, những yếu tố khác như chiều sâu nội dung, trải nghiệm đọc và khả năng lưu giữ có thể trở thành lý do khiến một bộ phận độc giả tiếp tục lựa chọn phương tiện này.</p>
+      </div>
+
+      <figure class="media media--wide reveal-img">
+        <div class="media-frame"><img src="./images/trang-nhat-thang-4-1532.webp" srcset="./images/trang-nhat-thang-4-800.webp 800w, ./images/trang-nhat-thang-4-1532.webp 1532w" sizes="(max-width: 900px) 100vw, 1200px" width="1532" height="650" loading="lazy" alt="Trang nhất bốn số báo in liên tiếp đầu tháng 4/2026 xếp cạnh nhau."></div>
+        <figcaption>Trang nhất bốn số báo liên tiếp, 05–08/4/2026. <span>Nguồn: Báo Người Lao Động</span></figcaption>
+      </figure>
+
+      <p class="chapter-bridge reveal">Và để hiểu điều gì còn giữ chân họ, cần bắt đầu từ chính những người vẫn tìm đến trang giấy mỗi ngày.</p>
+    </section>
+
+    <!-- ================================================================ CHƯƠNG 02 -->
+    <section class="section chapter tone-paper" id="chapter-2" data-chapter="chapter-2" data-num="02" data-label="Giữ" data-tone="paper">
+      <header class="opener">
+        <span class="opener-num" aria-hidden="true">02</span>
+        <p class="opener-verb" aria-hidden="true">Giữ</p>
+        <div class="opener-copy">
+          <p class="kicker">Phần 02</p>
+          <h2 class="split">Những người vẫn tìm đến trang giấy</h2>
+          <p class="opener-sub">Một thói quen chưa hoàn toàn biến mất</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>Giữa sự phổ biến của các nền tảng số, báo giấy vẫn xuất hiện trong đời sống của một bộ phận công chúng. Với họ, việc đọc báo không nhất thiết phải diễn ra mỗi ngày, nhưng vẫn là một hoạt động quen thuộc, gắn với những khoảng thời gian và không gian nhất định.</p>
+        <p>Khảo sát của nhóm nghiên cứu với 156 người cho thấy mức độ tiếp xúc với báo giấy có sự phân hóa.</p>
+      </div>
+
+      <div class="scrolly" data-chart="waffle" data-set="readers">
+        <figure class="scrolly-figure" aria-labelledby="readersTitle">
+          <div class="chart-head">
+            <p class="kicker" id="readersTitle">Bạn có đọc báo giấy không?</p>
+            <p class="chart-big"><b data-big>156</b><span data-big-note>người trả lời</span></p>
+          </div>
+          <div class="waffle" data-cols="13" aria-hidden="true"></div>
+          <ul class="legend" aria-hidden="true"></ul>
+        </figure>
+        <div class="scrolly-steps">
+          <div class="step" data-step="0"><div class="step-card">
+            <p class="step-year">156 người</p>
+            <p>Mỗi ô là một người tham gia khảo sát về độc giả báo giấy.</p>
+          </div></div>
+          <div class="step" data-step="1"><div class="step-card">
+            <p class="step-year">Phân hóa</p>
+            <ul class="step-list">
+              <li><b>65 người (41,7%)</b> đọc báo giấy thường xuyên.</li>
+              <li><b>49 người (31,4%)</b> đọc thỉnh thoảng.</li>
+              <li><b>10 người (6,4%)</b> hiếm khi đọc.</li>
+              <li><b>29 người (18,6%)</b> từng đọc nhưng hiện không còn.</li>
+              <li><b>3 người (1,9%)</b> chưa từng đọc.</li>
+            </ul>
+          </div></div>
+          <div class="step" data-step="2"><div class="step-card">
+            <p class="step-year">79,5%</p>
+            <p>Như vậy, có <b>124/156 người</b>, tương đương <b>79,5%</b>, vẫn có mức độ tiếp xúc hiện tại với báo giấy, bao gồm cả những người chỉ hiếm khi đọc.</p>
+          </div></div>
+        </div>
+      </div>
+      <details class="data-table">
+        <summary>Xem bảng số liệu</summary>
+        <table>
+          <caption>Mức độ đọc báo giấy (n = 156)</caption>
+          <thead><tr><th scope="col">Mức độ</th><th scope="col">Số người</th><th scope="col">Tỷ lệ</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Đọc thường xuyên</th><td>65</td><td>41,7%</td></tr>
+            <tr><th scope="row">Đọc thỉnh thoảng</th><td>49</td><td>31,4%</td></tr>
+            <tr><th scope="row">Hiếm khi đọc</th><td>10</td><td>6,4%</td></tr>
+            <tr><th scope="row">Từng đọc, hiện không còn</th><td>29</td><td>18,6%</td></tr>
+            <tr><th scope="row">Chưa từng đọc</th><td>3</td><td>1,9%</td></tr>
+          </tbody>
+        </table>
+      </details>
+
+      <div class="prose">
+        <p>Điều đáng chú ý không chỉ nằm ở số người còn đọc, mà còn ở những lý do khiến họ tiếp tục duy trì sự tiếp xúc ấy.</p>
+        <p>Trong các câu trả lời, những yếu tố như thói quen lâu năm, cảm giác tập trung, niềm tin vào nội dung, giá trị tri thức và khả năng lưu giữ thường xuyên được nhắc đến.</p>
+      </div>
+
+      <ul class="clips" aria-label="Những lý do được nhắc đến">
+        <li style="--r:-3deg">Thói quen lâu năm</li>
+        <li style="--r:2deg">Cảm giác tập trung</li>
+        <li style="--r:-1deg">Niềm tin vào nội dung</li>
+        <li style="--r:3deg">Giá trị tri thức</li>
+        <li style="--r:-2deg">Khả năng lưu giữ</li>
+      </ul>
+
+      <div class="split-media">
+        <figure class="media media--portrait reveal-img">
+          <div class="media-frame"><img src="./images/cu-ong-doc-bao-1300.webp" srcset="./images/cu-ong-doc-bao-700.webp 700w, ./images/cu-ong-doc-bao-1300.webp 1300w" sizes="(max-width: 900px) 100vw, 50vw" width="1300" height="859" loading="lazy" alt="Một cụ ông tóc bạc đeo kính chăm chú đọc tờ báo mở rộng trên tay."></div>
+          <figcaption>Đọc báo: một khoảng lặng giữa nhịp sống thường ngày. <span>Ảnh: Tư liệu</span></figcaption>
+        </figure>
+        <div class="prose prose--side">
+          <p>Đối với một số người, đọc báo giấy còn gắn với những hình ảnh rất đời thường: mua báo trên đường đi làm, đọc cùng ly cà phê buổi sáng, chia sẻ một bài viết với người thân hoặc giữ lại những số báo đặc biệt.</p>
+          <p>Tờ báo vì thế không chỉ hiện diện trong hoạt động tiếp nhận thông tin. Nó còn gắn với cách mỗi người tổ chức thời gian và tạo ra những khoảng lặng giữa nhịp sống thường ngày.</p>
+        </div>
+      </div>
+
+      <figure class="video-slot" data-video="" data-poster="./images/cu-ong-doc-bao-1300.webp">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Phát video phỏng vấn độc giả báo giấy lâu năm">
+            <span class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+          <span class="video-pending">Video sẽ sớm được cập nhật</span>
+        </div>
+        <figcaption><span class="kicker">Phỏng vấn</span><h3>Độc giả báo giấy lâu năm</h3></figcaption>
+      </figure>
+
+      <h3 class="sub-head split">Khi trải nghiệm đọc trở thành một giá trị riêng</h3>
+      <div class="prose">
+        <p>Một trong những khác biệt dễ nhận thấy giữa báo giấy và báo điện tử nằm ở cách người đọc tiếp xúc với nội dung.</p>
+      </div>
+
+      <figure class="compare-wrap reveal">
+        <div class="compare" id="compare">
+          <div class="compare-layer compare-layer--screen" aria-hidden="true">
+            <span class="compare-tag">Màn hình</span>
+            <div class="phone">
+              <div class="phone-bar"><i></i></div>
+              <div class="feed-card feed-card--video"><span>▶</span></div>
+              <div class="feed-card"><i></i><i></i><i class="short"></i></div>
+              <div class="feed-card feed-card--alert"><b>!</b><i></i></div>
+              <div class="feed-card"><i></i><i class="short"></i></div>
+            </div>
+          </div>
+          <div class="compare-layer compare-layer--paper" aria-hidden="true">
+            <span class="compare-tag">Giấy</span>
+            <div class="sheet">
+              <p class="sheet-mast">Trang 3</p>
+              <p class="sheet-head">Một bài viết đáng đọc</p>
+              <div class="sheet-cols">
+                <div><i></i><i></i><i class="mark"></i><i></i><i></i><i class="short"></i></div>
+                <div><i></i><i></i><i></i><i class="short"></i><i></i><i></i></div>
+              </div>
+              <span class="sheet-fold"></span>
+            </div>
+          </div>
+          <div class="compare-handle" aria-hidden="true"><span>⟷</span></div>
+          <input class="compare-range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Kéo để so sánh trải nghiệm đọc trên giấy và trên màn hình">
+        </div>
+        <div class="compare-notes">
+          <div><h4>Trên màn hình</h4><p>Tin tức có thể được cập nhật liên tục, tìm kiếm nhanh chóng và chia sẻ chỉ bằng vài thao tác. Người đọc dễ dàng chuyển từ văn bản sang hình ảnh, video hoặc những nội dung khác.</p></div>
+          <div><h4>Trên giấy</h4><p>Báo giấy tạo ra một trải nghiệm vật chất cụ thể. Người đọc có thể cầm, mở, lật từng trang, đánh dấu một đoạn thông tin hoặc giữ lại bài viết mình quan tâm.</p></div>
+        </div>
+      </figure>
+
+      <div class="prose">
+        <p>Dù nghiên cứu không khảo sát riêng báo in, kết quả vẫn gợi mở rằng định dạng đọc có thể ảnh hưởng đến trải nghiệm tiếp nhận thông tin.</p>
+        <p>Với những người đã quen đọc báo giấy, giá trị đôi khi không chỉ nằm ở nội dung mà còn ở quá trình đọc. Họ có thể dành thời gian cho một bài viết, đọc chậm hơn, quay lại một trang báo hoặc lưu giữ những thông tin cần thiết.</p>
+        <p>Điều đó không có nghĩa báo giấy tốt hơn báo điện tử trong mọi trường hợp. Hai phương tiện có thể đáp ứng những nhu cầu khác nhau. Một bên mang đến sự nhanh chóng, thuận tiện; bên còn lại duy trì trải nghiệm đọc có tính vật chất và khả năng lưu giữ.</p>
+      </div>
+      <blockquote class="pull reveal"><p>Có lẽ, điều khiến những người tiếp tục đọc báo giấy gắn bó với phương tiện này không đơn thuần là thói quen, mà còn là <mark>cảm giác thân thuộc</mark> được tích lũy qua thời gian.</p></blockquote>
+    </section>
+
+    <!-- ================================================================ CHƯƠNG 03 -->
+    <section class="section chapter tone-warm" id="chapter-3" data-chapter="chapter-3" data-num="03" data-label="Nối" data-tone="paper">
+      <header class="opener">
+        <span class="opener-num" aria-hidden="true">03</span>
+        <p class="opener-verb" aria-hidden="true">Nối</p>
+        <div class="opener-copy">
+          <p class="kicker">Phần 03</p>
+          <h2 class="split">Từ một tờ báo đến những kết nối đời thường</h2>
+          <p class="opener-sub">Khi việc đọc không còn là câu chuyện của riêng một người</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>Một tờ báo có thể bắt đầu từ hành động mua của một người, nhưng hành trình của nó đôi khi không dừng lại ở người đọc đầu tiên.</p>
+      </div>
+
+      <div class="hscroll journey" aria-label="Hành trình của một tờ báo">
+        <div class="hscroll-track">
+          <div class="hpanel hpanel--intro">
+            <p class="kicker">Hành trình của một tờ báo</p>
+            <p class="hpanel-title">Một tờ báo,<br>nhiều người đọc</p>
+            <p class="hscroll-hint">Cuộn để đi tiếp <span>→</span></p>
+          </div>
+          <article class="hpanel jstop">
+            <span class="jstop-num">01</span>
+            <svg class="jicon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 26h48l-4-12H12z"/><path d="M12 26v28h40V26"/><path d="M22 54V38h20v16"/><path d="M8 26c0 4 4 6 8 6s8-2 8-6c0 4 4 6 8 6s8-2 8-6c0 4 4 6 8 6s8-2 8-6"/></svg>
+            <h3>Mua</h3>
+            <p>Một tờ báo có thể bắt đầu từ hành động mua của một người.</p>
+          </article>
+          <article class="hpanel jstop">
+            <span class="jstop-num">02</span>
+            <svg class="jicon" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 30h52"/><path d="M12 30v22M52 30v22"/><path d="M18 30l4-16h20l4 16"/><path d="M26 20h12M25 25h14"/></svg>
+            <h3>Mở ra</h3>
+            <p>Sau khi được mở ra, tờ báo có thể được đặt trên bàn ăn.</p>
+          </article>
+          <article class="hpanel jstop">
+            <span class="jstop-num">03</span>
+            <svg class="jicon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="16" r="6"/><circle cx="46" cy="16" r="6"/><path d="M8 52V34c0-5 4-8 10-8s10 3 10 8"/><path d="M36 34c0-5 4-8 10-8s10 3 10 8v18"/><path d="M24 40h16l-4-4M40 40l-4 4"/></svg>
+            <h3>Chuyền tay</h3>
+            <p>Chuyền tay giữa các thành viên trong gia đình hoặc trở thành chủ đề trong một cuộc trò chuyện.</p>
+          </article>
+          <article class="hpanel jstop">
+            <span class="jstop-num">04</span>
+            <svg class="jicon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h30v20H20l-8 7v-7H8z"/><path d="M44 24h12v20h-4v7l-8-7H30v-4"/></svg>
+            <h3>Trao đổi</h3>
+            <p>Một bài viết về đời sống xã hội có thể mở đầu cho sự trao đổi quan điểm.</p>
+          </article>
+          <article class="hpanel jstop">
+            <span class="jstop-num">05</span>
+            <svg class="jicon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 56s-18-16-18-30a18 18 0 0 1 36 0c0 14-18 30-18 30z"/><circle cx="32" cy="26" r="6"/></svg>
+            <h3>Bàn luận</h3>
+            <p>Một thông tin về địa phương có thể khiến những người quen cùng bàn luận.</p>
+          </article>
+          <div class="journey-line" aria-hidden="true"><i class="journey-fill"></i><span class="journey-paper"></span></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Những thực hành nhỏ ấy cho thấy việc đọc báo có thể vượt ra khỏi hoạt động tiếp nhận thông tin đơn thuần.</p>
+        <p>Trong nhóm khảo sát 156 người, những câu trả lời về bối cảnh đọc cho thấy báo giấy thường gắn với các không gian quen thuộc như gia đình, quán cà phê và nơi làm việc.</p>
+      </div>
+
+      <ul class="spaces">
+        <li class="reveal"><span>01</span>Gia đình</li>
+        <li class="reveal"><span>02</span>Quán cà phê</li>
+        <li class="reveal"><span>03</span>Nơi làm việc</li>
+      </ul>
+
+      <div class="prose">
+        <p>Đây cũng là những không gian mà việc đọc có thể diễn ra bên cạnh các hoạt động sinh hoạt khác. Một tờ báo được đặt trên bàn có thể được nhiều người cùng tiếp cận, tạo ra cơ hội chia sẻ thông tin và quan điểm.</p>
+        <p>Từ góc độ văn hóa, những thực hành này góp phần hình thành sự kết nối giữa người đọc với nhau. Cộng đồng không nhất thiết phải có một tổ chức hay địa điểm sinh hoạt cố định. Đôi khi, sự gắn kết được tạo nên từ những thói quen tương đồng và những trải nghiệm được chia sẻ.</p>
+      </div>
+
+      <h3 class="sub-head split">Những người giữ nhịp cho hành trình của trang giấy</h3>
+
+      <figure class="media media--bleed reveal-img">
+        <div class="media-frame"><img src="./images/sap-bao-dem-2000.webp" srcset="./images/sap-bao-dem-1000.webp 1000w, ./images/sap-bao-dem-2000.webp 2000w" sizes="100vw" width="2000" height="1377" loading="lazy" alt="Bà cụ mặc áo đỏ trao tờ báo cho một người đàn ông đội mũ bảo hiểm tại sạp báo nhỏ lúc trời tối."></div>
+        <figcaption>Một sạp báo nhỏ vẫn mở cửa khi thành phố còn chưa sáng hẳn. <span>Ảnh: Báo Thanh Niên</span></figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Nếu độc giả là những người tiếp nhận thông tin, người bán báo lại là một phần quan trọng trong hành trình đưa những trang giấy đến với công chúng.</p>
+        <p>Những sạp báo từng xuất hiện tại nhiều góc phố, trước cổng cơ quan hay gần khu dân cư. Người bán báo không chỉ cung cấp một ấn phẩm, mà còn có thể trở thành gương mặt quen thuộc với những khách hàng mua báo mỗi sáng.</p>
+        <p>Khi thói quen cập nhật tin tức chuyển dần sang điện thoại và Internet, hoạt động bán báo cũng đứng trước những thay đổi. Lượng khách, cách phân phối và nhu cầu mua báo không còn giống trước.</p>
+      </div>
+
+      <figure class="video-slot video-slot--film" id="phong-su" data-video="https://drive.google.com/file/d/1YFDh1fcCEtkzjHbo_pUqpdonQHhnaYvf/view" data-poster="./images/sap-bao-dem-2000.webp">
+        <div class="video-frame">
+          <div class="film-title" aria-hidden="true"><span class="kicker">Phóng sự</span><b>Văn hóa đọc báo giấy</b></div>
+          <button class="video-play" type="button" aria-label="Phát phóng sự Văn hóa đọc báo giấy">
+            <span class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+          <span class="video-pending">Video sẽ sớm được cập nhật</span>
+        </div>
+        <figcaption><span class="kicker">Phóng sự nhân vật</span><h3>Người bán báo</h3></figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Câu chuyện của người bán báo có thể giúp người đọc nhìn thấy một khía cạnh khác của sự thay đổi: báo giấy không chỉ gắn với ký ức của người đọc, mà còn liên quan đến sinh kế và những con người đã dành nhiều năm để đưa thông tin đến cộng đồng.</p>
+      </div>
+
+      <h3 class="sub-head split">Những ký ức được truyền qua các thế hệ</h3>
+
+      <div class="generations">
+        <div class="gen gen--then reveal">
+          <p class="kicker">Thế hệ từng lớn lên cùng báo giấy</p>
+          <p>Đối với thế hệ từng lớn lên trong thời kỳ báo giấy phổ biến, tờ báo có thể gắn với những buổi sáng, những lần chờ số báo mới hoặc những trang báo Tết được giữ lại sau mỗi mùa xuân.</p>
+          <p class="gen-line">Một người lớn tuổi có thể nhớ cảm giác đọc báo cùng gia đình.</p>
+        </div>
+        <figure class="gen-photo reveal-img">
+          <div class="media-frame"><img src="./images/hai-nguoi-doc-bao-1000.webp" srcset="./images/hai-nguoi-doc-bao-600.webp 600w, ./images/hai-nguoi-doc-bao-1000.webp 1000w" sizes="(max-width: 900px) 100vw, 34vw" width="1000" height="750" loading="lazy" alt="Hai người đàn ông lớn tuổi ngồi cạnh nhau, mỗi người đọc một tờ báo, bên cạnh ly nước."></div>
+          <figcaption>Ảnh: Tư liệu</figcaption>
+        </figure>
+        <div class="gen gen--now reveal">
+          <p class="kicker">Người trẻ hôm nay</p>
+          <p>Với người trẻ, những hình ảnh ấy đôi khi chỉ xuất hiện qua lời kể của ông bà, cha mẹ hoặc qua những lần tình cờ tiếp xúc với báo in.</p>
+          <p class="gen-line">Một người trẻ có thể không duy trì thói quen mua báo, nhưng vẫn tò mò khi được giới thiệu một ấn phẩm đặc biệt.</p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Khoảng cách giữa hai nhóm vì vậy không chỉ nằm ở tần suất đọc, mà còn ở trải nghiệm và ký ức được hình thành trong những giai đoạn khác nhau.</p>
+        <p>Khi một thực hành truyền thông thay đổi, những ý nghĩa văn hóa hình thành xung quanh nó có thể tiếp tục tồn tại dưới những hình thức khác. Và đôi khi, chính những cuộc trò chuyện giữa các thế hệ là cách để những ký ức ấy được truyền lại.</p>
+      </div>
+    </section>
+
+    <!-- ================================================================ CHƯƠNG 04 -->
+    <section class="section chapter tone-screen" id="chapter-4" data-chapter="chapter-4" data-num="04" data-label="Tò mò" data-tone="screen">
+      <div class="tone-bg" aria-hidden="true"></div>
+      <header class="opener">
+        <span class="opener-num" aria-hidden="true">04</span>
+        <p class="opener-verb" aria-hidden="true">Tò mò</p>
+        <div class="opener-copy">
+          <p class="kicker">Phần 04</p>
+          <h2 class="split">Người trẻ nhìn báo giấy bằng ánh mắt nào?</h2>
+          <p class="opener-sub">Đã từng đọc, nhưng chưa chắc đã gắn bó</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>Với nhiều người trẻ, điện thoại thông minh đã trở thành phương tiện quen thuộc để cập nhật tin tức. Những nội dung mới xuất hiện liên tục trên mạng xã hội, báo điện tử và các nền tảng trực tuyến.</p>
+        <p>Trong bối cảnh đó, báo giấy thường không phải lựa chọn đầu tiên khi họ muốn tìm kiếm thông tin.</p>
+        <p>Khảo sát của nhóm nghiên cứu với 132 người trẻ trong độ tuổi 15–30 cho thấy phần lớn người tham gia thuộc nhóm 19–22 tuổi, chiếm <b>55,3%</b>.</p>
+      </div>
+
+      <div class="scrolly" data-chart="waffle" data-set="youth">
+        <figure class="scrolly-figure" aria-labelledby="youthTitle">
+          <div class="chart-head">
+            <p class="kicker" id="youthTitle" data-title>Bạn đã từng đọc báo giấy chưa?</p>
+            <p class="chart-big"><b data-big>132</b><span data-big-note>người trẻ 15–30 tuổi</span></p>
+          </div>
+          <div class="waffle" data-cols="12" aria-hidden="true"></div>
+          <ul class="legend" aria-hidden="true"></ul>
+        </figure>
+        <div class="scrolly-steps">
+          <div class="step" data-step="0"><div class="step-card">
+            <p class="step-year">132 người trẻ</p>
+            <p>Mỗi ô là một người trẻ trong độ tuổi 15–30 tham gia khảo sát.</p>
+          </div></div>
+          <div class="step" data-step="1"><div class="step-card">
+            <p class="step-year">80,3% từng đọc</p>
+            <p>Về trải nghiệm với báo giấy, <b>106/132 người (80,3%)</b> cho biết đã từng đọc ở những mức độ khác nhau. Tuy nhiên, trong nhóm này, chỉ có <b>5 người</b> từng đọc thường xuyên, <b>29 người</b> thỉnh thoảng đọc và <b>72 người</b> chỉ tiếp xúc vài lần.</p>
+          </div></div>
+          <div class="step" data-step="2"><div class="step-card">
+            <p class="step-year">Còn đọc bao nhiêu?</p>
+            <p>Khi xét riêng 106 người từng đọc, tần suất tiếp xúc hiện tại tiếp tục cho thấy mức độ gắn bó còn hạn chế:</p>
+            <ul class="step-list">
+              <li><b>59 người</b> rất hiếm khi đọc.</li>
+              <li><b>24 người</b> hiện không còn đọc.</li>
+              <li><b>16 người</b> đọc vài lần mỗi tháng.</li>
+              <li><b>5 người</b> đọc vài lần mỗi tuần.</li>
+              <li><b>2 người</b> đọc hằng ngày.</li>
+            </ul>
+          </div></div>
+          <div class="step" data-step="3"><div class="step-card">
+            <p class="step-year">7 người</p>
+            <p>Chỉ <b>7 trong 106 người</b> từng đọc còn đọc báo giấy ít nhất vài lần mỗi tuần.</p>
+          </div></div>
+        </div>
+      </div>
+      <details class="data-table">
+        <summary>Xem bảng số liệu</summary>
+        <table>
+          <caption>Bạn đã từng đọc báo giấy chưa? (n = 132)</caption>
+          <thead><tr><th scope="col">Trả lời</th><th scope="col">Số người</th><th scope="col">Tỷ lệ</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Thường xuyên</th><td>5</td><td>3,8%</td></tr>
+            <tr><th scope="row">Thỉnh thoảng</th><td>29</td><td>22%</td></tr>
+            <tr><th scope="row">Chỉ đọc vài lần</th><td>72</td><td>54,5%</td></tr>
+            <tr><th scope="row">Chưa từng</th><td>26</td><td>19,7%</td></tr>
+          </tbody>
+        </table>
+        <table>
+          <caption>Tần suất đọc báo giấy hiện nay (n = 106 người từng đọc)</caption>
+          <thead><tr><th scope="col">Tần suất</th><th scope="col">Số người</th><th scope="col">Tỷ lệ</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Hằng ngày</th><td>2</td><td>1,9%</td></tr>
+            <tr><th scope="row">Vài lần mỗi tuần</th><td>5</td><td>4,7%</td></tr>
+            <tr><th scope="row">Vài lần mỗi tháng</th><td>16</td><td>15,1%</td></tr>
+            <tr><th scope="row">Rất hiếm khi</th><td>59</td><td>55,7%</td></tr>
+            <tr><th scope="row">Không còn đọc</th><td>24</td><td>22,6%</td></tr>
+          </tbody>
+        </table>
+      </details>
+
+      <div class="prose">
+        <p>Những con số này cho thấy việc từng đọc báo giấy chưa đồng nghĩa với việc hình thành một thói quen lâu dài. Báo in vẫn được biết đến, nhưng chưa phải một phần thường xuyên trong hoạt động tiếp nhận thông tin của phần lớn người tham gia khảo sát.</p>
+      </div>
+
+      <h3 class="sub-head split">Khoảng cách không chỉ nằm ở thói quen</h3>
+      <div class="prose">
+        <p>Vậy điều gì khiến người trẻ ít lựa chọn báo giấy?</p>
+      </div>
+
+      <div class="marquee" aria-label="Những lý do người trẻ ít chọn báo giấy">
+        <ul class="marquee-row">
+          <li>Sự tiện lợi của báo điện tử</li><li>Tốc độ cập nhật của mạng xã hội</li><li>Đọc ở mọi nơi trên điện thoại</li><li>Thiếu thói quen</li>
+        </ul>
+        <ul class="marquee-row marquee-row--rev">
+          <li>Khó tìm hoặc mua báo</li><li>Thiếu thời gian</li><li>Cảm nhận về mức độ phù hợp của nội dung</li>
+        </ul>
+      </div>
+
+      <div class="prose">
+        <p>Các câu trả lời trong khảo sát tập trung vào những yếu tố như sự tiện lợi của báo điện tử, tốc độ cập nhật của mạng xã hội, khả năng đọc ở mọi nơi trên điện thoại, thiếu thói quen, khó tìm hoặc mua báo, thiếu thời gian và cảm nhận về mức độ phù hợp của nội dung.</p>
+        <p>Những nguyên nhân này phản ánh sự thay đổi trong nhịp sống và nhu cầu tiếp nhận thông tin của người trẻ.</p>
+        <p>Yếu tố liên quan đến sự thờ ơ của sinh viên đối với việc tiếp cận và nhận thức thông tin trên báo chí truyền thống. Trong đó có xu hướng ưu tiên nền tảng số, mức độ liên quan của nội dung, sự gắn kết với nội dung, lối sống và tính cơ động, cùng những quan tâm về môi trường.</p>
+      </div>
+      <blockquote class="pull reveal"><p>Có thể thấy, người trẻ ít đọc báo giấy không nhất thiết vì họ phủ nhận giá trị của phương tiện này. Họ đơn giản đang lựa chọn <mark>hình thức thuận tiện hơn</mark> với nhu cầu hiện tại.</p></blockquote>
+
+      <figure class="video-slot" data-video="">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Phát video phỏng vấn Dương Minh Vũ">
+            <span class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+          <span class="video-pending">Video sẽ sớm được cập nhật</span>
+        </div>
+        <figcaption><span class="kicker">Phỏng vấn · Người trẻ</span><h3>Dương Minh Vũ</h3></figcaption>
+      </figure>
+
+      <h3 class="sub-head split">Khi những trang giấy khiến thế hệ số tò mò</h3>
+      <div class="prose">
+        <p>Dù không còn là phương tiện cập nhật tin tức thường xuyên, báo giấy vẫn có thể tạo sức hút khi mang đến một trải nghiệm khác biệt.</p>
+        <p>Một ví dụ đáng chú ý là phụ san panorama về Chiến dịch Điện Biên Phủ do Báo Nhân Dân phát hành nhân dịp kỷ niệm 70 năm Chiến thắng Điện Biên Phủ vào tháng 5/2024.</p>
+      </div>
+
+      <div class="hscroll panorama" aria-label="Phụ san panorama dài 3,21 mét">
+        <div class="hscroll-track">
+          <div class="hpanel hpanel--intro">
+            <p class="kicker">Phụ san panorama · 5/2024</p>
+            <p class="hpanel-title"><span class="ruler-count"><b id="rulerCount">0</b> cm</span><br>khi mở ra</p>
+            <p class="hscroll-hint">Cuộn để mở phụ san <span>→</span></p>
+          </div>
+          <div class="pano">
+            <div class="pano-strip">
+              <div class="pano-page"><span class="pano-label">Trang 1</span><i class="ph"></i><i></i><i></i><i class="short"></i></div>
+              <div class="pano-page"><span class="pano-label">Trang 2</span><i></i><i class="ph ph--wide"></i><i></i></div>
+              <div class="pano-page"><span class="pano-label">Trang 3</span><i></i><i></i><i class="ph"></i><i class="short"></i></div>
+              <div class="pano-page"><span class="pano-label">Trang 4</span><i class="ph ph--wide"></i><span class="pano-qr" aria-hidden="true"></span><span class="pano-ar">AR</span></div>
+            </div>
+            <div class="pano-ruler" aria-hidden="true"></div>
+            <p class="pano-note">Minh họa mô phỏng khổ dài của ấn phẩm, không phải hình ảnh thật của phụ san.</p>
+          </div>
+          <div class="hpanel pano-facts">
+            <p><b>3,21 m</b><span>chiều dài khi mở ra, tái hiện bức tranh panorama lịch sử tại khu vực di tích Điện Biên Phủ</span></p>
+            <p><b>4 trang</b><span>báo liên tiếp, kết hợp mã QR và công nghệ thực tế tăng cường (AR)</span></p>
+            <p><b>3 lần</b><span>in lại trong hai tuần</span></p>
+            <p><b>300.000+</b><span>bản được phát hành, theo WAN-IFRA</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Ấn phẩm có chiều dài 3,21 mét khi mở ra, tái hiện bức tranh panorama lịch sử tại khu vực di tích Điện Biên Phủ. Thiết kế kết hợp bốn trang báo liên tiếp với mã QR và công nghệ thực tế tăng cường (AR), giúp người đọc tiếp cận nội dung lịch sử theo hình thức tương tác.</p>
+        <p>Theo WAN-IFRA, ấn phẩm được in lại ba lần trong hai tuần, với hơn 300.000 bản được phát hành. Sản phẩm cũng thu hút sự quan tâm của nhiều độc giả trẻ trên mạng xã hội.</p>
+        <p>Điều đáng chú ý ở trường hợp này không chỉ nằm ở số lượng phát hành, mà còn ở cách một ấn phẩm báo in tạo ra sự tò mò với công chúng vốn quen thuộc với môi trường số.</p>
+        <p>Người đọc không chỉ tiếp nhận thông tin qua những dòng chữ. Họ có thể mở rộng trải nghiệm bằng hình ảnh panorama, mã QR và công nghệ tương tác.</p>
+        <p>Đây là một trường hợp đặc biệt, không đại diện cho xu hướng chung của toàn bộ người trẻ. Tuy nhiên, nó gợi mở một khả năng: báo giấy vẫn có thể tạo ra sức hút nếu nội dung, hình thức và trải nghiệm được phát triển phù hợp với nhu cầu của công chúng hiện đại.</p>
+      </div>
+      <blockquote class="pull reveal"><p>Thay vì yêu cầu người trẻ quay lại thói quen đọc của thế hệ trước, có lẽ điều quan trọng hơn là tìm ra lý do để họ <mark>muốn cầm một tờ báo</mark> trên tay.</p></blockquote>
+    </section>
+
+    <!-- ================================================================ CHƯƠNG 05 -->
+    <section class="section chapter tone-red" id="chapter-5" data-chapter="chapter-5" data-num="05" data-label="Hướng" data-tone="red">
+      <div class="tone-bg" aria-hidden="true"></div>
+      <header class="opener">
+        <span class="opener-num" aria-hidden="true">05</span>
+        <p class="opener-verb" aria-hidden="true">Hướng</p>
+        <div class="opener-copy">
+          <p class="kicker">Phần 05</p>
+          <h2 class="split">Những trang giấy sẽ đi về đâu?</h2>
+          <p class="opener-sub">Không cạnh tranh bằng tốc độ, mà bằng giá trị riêng</p>
+        </div>
+      </header>
+
+      <div class="prose">
+        <p>Trong môi trường truyền thông hiện đại, báo giấy khó có thể cạnh tranh với báo điện tử về tốc độ cập nhật. Tuy nhiên, điều đó không có nghĩa báo in cần từ bỏ vai trò của mình.</p>
+      </div>
+
+      <div class="pillars">
+        <article class="pillar">
+          <span class="pillar-num">01</span>
+          <h3>Chiều sâu</h3>
+          <p>Khi thông tin ngắn và liên tục đã xuất hiện trên nhiều nền tảng, những nội dung có chiều sâu như phóng sự, bài phân tích, chuyên đề văn hóa và các ấn phẩm có giá trị lưu giữ có thể trở thành hướng phát triển phù hợp.</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-num">02</span>
+          <h3>Thiết kế</h3>
+          <p>Thiết kế cũng cần được xem là một phần của sản phẩm báo chí. Cách tổ chức trang, chất lượng hình ảnh, chất liệu giấy và hình thức trình bày có thể góp phần tạo ra trải nghiệm riêng cho độc giả.</p>
+        </article>
+        <article class="pillar">
+          <span class="pillar-num">03</span>
+          <h3>Công nghệ</h3>
+          <p>Việc kết hợp mã QR, AR, video, podcast hoặc dữ liệu trực quan có thể giúp mở rộng cách công chúng tiếp cận nội dung.</p>
+        </article>
+      </div>
+
+      <blockquote class="pull reveal"><p>Một tờ báo không nhất thiết phải được mua chỉ vì chứa thông tin mới nhất. Nó cũng có thể được lựa chọn vì <mark>một câu chuyện đáng đọc</mark>, một thiết kế đẹp hoặc giá trị mà người đọc muốn lưu giữ.</p></blockquote>
+
+      <h3 class="sub-head split">Khi công nghệ trở thành cầu nối</h3>
+      <div class="prose">
+        <p>Trường hợp phụ san panorama của Báo Nhân Dân cho thấy báo in không nhất thiết phải đứng ngoài sự phát triển của công nghệ.</p>
+        <p>Tuy nhiên, công nghệ không nên chỉ được sử dụng như một yếu tố trang trí. Điều quan trọng là nó phải bổ sung giá trị cho trải nghiệm đọc, giúp nội dung trở nên dễ tiếp cận và hấp dẫn hơn.</p>
+        <p>Báo giấy có thể tận dụng môi trường số để đưa độc giả đến gần hơn với những câu chuyện được kể trên trang in, đồng thời giữ lại những đặc điểm riêng của một ấn phẩm vật chất.</p>
+      </div>
+
+      <h3 class="sub-head split">Góc nhìn từ những người làm báo</h3>
+      <div class="prose">
+        <p>Đằng sau mỗi tờ báo là quá trình lựa chọn thông tin, xây dựng nội dung, biên tập và tổ chức sản xuất. Khi hành vi độc giả thay đổi, những người làm báo cũng phải đối diện với câu hỏi về cách duy trì giá trị của sản phẩm in.</p>
+      </div>
+
+      <figure class="video-slot" data-video="">
+        <div class="video-frame">
+          <button class="video-play" type="button" aria-label="Phát video phỏng vấn chị Huyền, Công ty Báo VN">
+            <span class="play-ring" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          </button>
+          <span class="video-pending">Video sẽ sớm được cập nhật</span>
+        </div>
+        <figcaption><span class="kicker">Phỏng vấn · Người làm báo</span><h3>Chị Huyền, Công ty Báo VN</h3></figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>Tương lai của báo giấy không chỉ phụ thuộc vào việc duy trì lượng phát hành, mà còn nằm ở khả năng tạo ra mối quan hệ có ý nghĩa với độc giả.</p>
+        <p>Với những người đã gắn bó lâu năm, đó có thể là sự tiếp nối của một thói quen. Với người trẻ, đó có thể là một trải nghiệm mới, một ấn phẩm đáng khám phá hoặc một câu chuyện khiến họ muốn dừng lại lâu hơn giữa dòng thông tin liên tục.</p>
+      </div>
+      <blockquote class="pull pull--plain reveal"><p>Có lẽ, báo giấy không cần trở lại giống như trước đây. Điều cần thiết là tìm được vị trí của mình trong một môi trường truyền thông đã thay đổi.</p></blockquote>
+    </section>
+
+    <!-- ================================================================ KẾT -->
+    <section class="section ending tone-paper" id="ket" data-chapter="ket" data-num="06" data-label="Kết" data-tone="paper">
+      <header class="intro-head">
+        <p class="kicker">Kết</p>
+        <h2 class="split">Điều còn lại sau mỗi trang báo</h2>
+      </header>
+
+      <div class="fold-stage" aria-hidden="true">
+        <div class="fold">
+          <div class="fold-half fold-half--top"><span>Chạm giấy</span></div>
+          <div class="fold-half fold-half--bottom"><span>Chạm ký ức</span></div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p class="dropcap">Một tờ báo có thể được in ra trong một ngày, được đọc trong một buổi sáng và nhanh chóng nhường chỗ cho những số báo mới. Nhưng với người đọc, những gì còn lại đôi khi không chỉ là thông tin.</p>
+        <p>Đó có thể là thói quen mua báo trên đường đi làm, một bài viết được đánh dấu, một số báo Tết được cất giữ hay câu chuyện từng được chia sẻ trong bữa cơm gia đình.</p>
+        <p>Khảo sát của nhóm nghiên cứu với 288 người tham gia cho thấy báo giấy vẫn có những nhóm công chúng tiếp tục tiếp xúc và ghi nhận những giá trị riêng. Trong khi đó, người trẻ dù phần lớn từng đọc báo giấy nhưng chưa duy trì tần suất thường xuyên.</p>
+        <p>Sự khác biệt ấy không đơn thuần là khoảng cách giữa hai thế hệ. Đó còn là sự thay đổi trong cách con người tiếp nhận thông tin, tổ chức thời gian và lựa chọn những trải nghiệm phù hợp với cuộc sống của mình.</p>
+        <p>Có thể trong tương lai, những sạp báo sẽ không còn xuất hiện nhiều như trước. Những tờ báo được chuyền tay có thể trở thành hình ảnh ít gặp hơn trong đời sống thường ngày. Nhưng những giá trị về tri thức, ký ức và sự kết nối mà báo giấy từng mang lại vẫn có thể tiếp tục tồn tại dưới những hình thức khác.</p>
+        <p>Bởi đôi khi, điều khiến một tờ báo trở nên đáng nhớ không nằm ở số lượng trang giấy, mà ở câu chuyện được đọc, người đã cùng đọc và khoảnh khắc mà nó lưu giữ.</p>
+      </div>
+
+      <p class="scrub-text scrub-text--final">Khi thông tin ngày càng nhanh, có lẽ điều đáng suy ngẫm không chỉ là chúng ta còn đọc báo giấy hay không, mà còn là: giữa vô vàn câu chuyện được lướt qua mỗi ngày, đâu là những điều chúng ta thực sự muốn dừng lại để đọc và giữ lại trong ký ức?</p>
+    </section>
+  </main>
+
+  <!-- ================================================================ FOOTER -->
+  <footer class="site-footer" data-tone="screen">
+    <div class="footer-inner">
+      <p class="footer-title">Chạm giấy<br><em>– Chạm ký ức</em></p>
+      <div class="footer-cols">
+        <div>
+          <h4>Thực hiện</h4>
+          <p>Nhóm thực hiện <span class="todo">[cập nhật tên thành viên]</span></p>
+        </div>
+        <div>
+          <h4>Phương pháp</h4>
+          <p>Hai cuộc khảo sát của nhóm nghiên cứu tại Hà Nội năm 2026: 156 người (độc giả báo giấy) và 132 người trẻ 15–30 tuổi.</p>
+        </div>
+        <div>
+          <h4>Nguồn số liệu</h4>
+          <ul>
+            <li>Vietnam Media Landscape Report 2023–2024</li>
+            <li>Bộ Văn hóa, Thể thao và Du lịch</li>
+            <li>WAN-IFRA</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hình ảnh</h4>
+          <ul>
+            <li>Sạp báo: Báo Thanh Niên</li>
+            <li>Trang nhất: Báo Người Lao Động</li>
+            <li>Các ảnh khác: Tư liệu</li>
+          </ul>
+        </div>
+      </div>
+      <a class="back-top" href="#top">Về đầu trang <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</body>
+</html>
