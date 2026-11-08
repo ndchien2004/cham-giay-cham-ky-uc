@@ -491,7 +491,7 @@ if (animate) {
     .from(".fp-top", { autoAlpha: 0, y: -10, duration: 0.8 })
     .from(".fp-rule", { scaleX: 0, duration: 1.2, stagger: 0.12 }, 0.1)
     .to(".fp-line > span", { yPercent: 0, duration: 1.2, stagger: 0.12 }, 0.2)
-    .from([".fp-deck", ".fp-meta"], { autoAlpha: 0, y: 24, duration: 1, stagger: 0.1 }, 0.6)
+    .from(".fp-deck", { autoAlpha: 0, y: 24, duration: 1 }, 0.6)
     .from(".print", { autoAlpha: 0, yPercent: 40, scale: 0.92, duration: 1.3, stagger: 0.12 }, 0.45)
     .from(".ticker", { autoAlpha: 0, duration: 0.8 }, 0.9);
 
