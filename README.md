@@ -65,12 +65,7 @@ Khi để trống, khối hiện "Video sẽ sớm được cập nhật".
 
 Video quay dọc: thêm `data-ratio="9 / 16"`. Ảnh bìa: `data-poster="./images/..."`.
 
-| Khối | Vị trí | Trạng thái |
-|---|---|---|
-| Độc giả báo giấy lâu năm | Phần 02 | chờ link |
-| Phóng sự "Văn hóa đọc báo giấy" (`#phong-su`) | Phần 03, người bán báo | đã gắn link Drive |
-| Dương Minh Vũ | Phần 04 | chờ link |
-| Chị Huyền, Công ty Báo VN | Phần 05 | chờ link |
+Trang có một video duy nhất: phóng sự "Văn hóa đọc báo giấy" (`#phong-su`, Phần 03), đã gắn link Google Drive.
 
 ## Khả năng truy cập
 
@@ -80,6 +75,5 @@ Video quay dọc: thêm `data-ratio="9 / 16"`. Ảnh bìa: `data-poster="./image
 
 ## Việc còn lại
 
-- Gắn link 3 video phỏng vấn; kiểm tra quyền chia sẻ của video phóng sự trên Drive.
-- Điền tên nhóm thực hiện ở footer (đang là `[cập nhật tên thành viên]`).
+- Kiểm tra quyền chia sẻ của video phóng sự trên Drive ("Bất kỳ ai có đường liên kết").
 - Xác nhận nguồn/quyền dùng ảnh (sạp báo: Báo Thanh Niên; trang nhất: Báo Người Lao Động; ảnh còn lại ghi "Tư liệu").

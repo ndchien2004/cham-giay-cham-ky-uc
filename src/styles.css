@@ -1012,7 +1012,6 @@ h2 {
 .footer-cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; padding: 2.4rem 0; font-size: 0.98rem; line-height: 1.55; color: var(--screen-muted); }
 .footer-cols h4 { font: 600 0.72rem/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--screen-text); margin-bottom: 0.8rem; }
 .footer-cols li + li { margin-top: 0.3rem; }
-.todo { color: #ff8a70; }
 .back-top { display: inline-flex; gap: 0.5rem; font: 600 0.75rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0.8rem 1.1rem; border: 1px solid var(--line); border-radius: 999px; }
 .back-top:hover { background: var(--screen-text); color: var(--screen); }
 
