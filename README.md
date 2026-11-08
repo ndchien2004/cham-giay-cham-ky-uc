@@ -43,7 +43,6 @@ public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 |---|---|---|
 | Hero | Trang nhất + xấp ảnh in | Tít và ảnh hiện dần; khi cuộn, hai dòng tít trượt ngược chiều, ảnh trôi lệch nhau; dải số liệu chạy ngang |
 | Mở đầu | Thẻ khảo sát 288 = 156 + 132 | Số đếm |
-| Đầu mỗi chương | Lật trang | Tờ báo của phần trước lùi ra trên mặt bàn, trang phải lật qua gáy giữa (3D, theo cuộn); mặt sau là nửa trái trang mở chương; khối `.turn` |
 | Phần 01 | Chồng báo (1 tờ = 10 triệu bản) | Scrollytelling 3 bước: 1,1 tỷ → 250 triệu (−77%) |
 | Phần 02 | 156 ô, mỗi ô một người | 3 bước; có bảng số liệu và tooltip |
 | Phần 02 | Kéo so sánh Giấy ↔ Màn hình | Dùng được bằng bàn phím (thanh trượt) |
@@ -69,7 +68,7 @@ Khi để trống, khối hiện "Video sẽ sớm được cập nhật".
 
 Video quay dọc: thêm `data-ratio="9 / 16"`. Ảnh bìa: `data-poster="./images/..."`.
 
-Trang có 4 video phỏng vấn nhúng từ Google Drive: Độc giả báo giấy (Phần 2), Người trẻ (Phần 3), Người bán báo (Phần 4), Người làm ngành báo (Phần 5, kèm một ảnh từ Drive). File trên Drive phải để "Bất kỳ ai có đường liên kết".
+Trang có 4 video phỏng vấn nhúng từ Google Drive: Độc giả báo giấy (Phần 2), Người trẻ (Phần 3), Người bán báo (Phần 4), Người làm ngành báo (Phần 5). File trên Drive phải để "Bất kỳ ai có đường liên kết".
 
 ## Khả năng truy cập
 

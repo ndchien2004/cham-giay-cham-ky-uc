@@ -506,7 +506,6 @@ if (animate) {
   /* ----- Tiêu đề: từng chữ hiện lên ----- */
   $$(".split").forEach((el) => {
     const words = splitWords(el);
-    if (el.closest(".turn")) return; // tiêu đề đầu chương chạy theo nhịp lật trang
     gsap.from(words, {
       yPercent: 60, autoAlpha: 0, filter: "blur(8px)",
       stagger: 0.035, duration: 1.1, ease: "expo.out",
@@ -546,53 +545,11 @@ if (animate) {
     });
   });
 
-  /* ----- Kéo nội dung sau trang mở chương lên dải nền trống bên dưới (không chạm chữ) ----- */
-  const fitTurns = () => $$(".turn").forEach((t) => {
-    const sp = $(".turn-spread", t);
-    const hd = $("header", sp);
-    const gap = sp.offsetHeight - (hd.offsetTop + hd.offsetHeight);
-    t.style.marginBottom = -Math.max(0, gap - 32) + "px";
-  });
-  fitTurns();
-  ScrollTrigger.addEventListener("refreshInit", fitTurns);
-
-  /* ----- Lật trang: tờ báo lùi ra, trang phải lật qua gáy, lộ trang mở chương ----- */
-  $$(".turn").forEach((turn) => {
-    const spread = $(".turn-spread", turn);
-    const leaf = $(".turn-leaf", turn);
-    const head = $(".opener, .intro-head", turn);
-    const verb = $(".opener-verb", head);
-    // Mặt sau của trang lật là bản sao trang mở chương, chỉ nửa trái lộ ra
-    // (bọc trong khung rộng bằng cả trang để bản sao căn đúng như bản thật)
-    const clone = head.cloneNode(true);
-    clone.querySelectorAll("[id]").forEach((n) => n.removeAttribute("id"));
-    const cloneWrap = document.createElement("div");
-    cloneWrap.className = "leaf-clone";
-    cloneWrap.setAttribute("aria-hidden", "true");
-    cloneWrap.appendChild(clone);
-    $(".leaf-back", turn).appendChild(cloneWrap);
-
-    const prevTone = turn.dataset.tone;
-    const ownTone = turn.closest("[data-chapter]").dataset.tone;
-    const FLIP_START = 0.1;
-    const FLIP_END = 0.8;
-    const tl = gsap.timeline({
-      defaults: { ease: "none" },
-      scrollTrigger: { trigger: turn, start: "top top", end: "bottom bottom", scrub: 0.8 },
-      onUpdate: () => {
-        // ánh sáng, bóng và tông header bám theo góc lật thực tế của trang
-        const f = Math.min(1, Math.max(0, -gsap.getProperty(leaf, "rotationY") / 180));
-        turn.style.setProperty("--f", f.toFixed(3));
-        turn.classList.toggle("is-done", f >= 0.999);
-        const t = f < 0.5 ? prevTone : ownTone;
-        if (turn.dataset.tone !== t) { turn.dataset.tone = t; refreshTone(); }
-      },
-    });
-    const far = () => (isSmall() ? 0.88 : 0.8);
-    tl.to(spread, { scale: far, rotationX: 9, y: () => -window.innerHeight * 0.02, duration: 0.32, ease: "power2.out" }, 0)
-      .fromTo(leaf, { rotationY: 0, z: 1 }, { rotationY: -180, z: 1, duration: FLIP_END - FLIP_START, ease: "power2.inOut" }, FLIP_START)
-      .to(spread, { scale: 1, rotationX: 0, y: 0, duration: 0.3, ease: "power2.inOut" }, FLIP_END - 0.24);
-    if (verb) tl.fromTo(verb, { "--wdth": 62 }, { "--wdth": 112, duration: 1 - FLIP_END - 0.04 }, FLIP_END + 0.04);
+  /* ----- Mở chương: nhãn, dòng phụ, mục lục nhỏ và khối bên cạnh hiện dần ----- */
+  $$(".opener").forEach((op) => {
+    gsap.from($$(".kicker, .opener-sub, .opener-toc li", op), { y: 20, autoAlpha: 0, stagger: 0.06, duration: 0.9, ease: "expo.out", scrollTrigger: { trigger: op, start: "top 80%", once: true } });
+    const side = $(".opener-side", op);
+    if (side) gsap.from(side, { y: 50, autoAlpha: 0, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: op, start: "top 75%", once: true } });
   });
 
   /* ----- Khảo sát: thanh chia nhóm ----- */

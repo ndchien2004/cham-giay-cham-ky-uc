@@ -1051,107 +1051,6 @@ h2 {
   .ticker-row { flex-wrap: wrap; width: auto; padding: 0 var(--gutter); gap: 0 1.6rem; }
 }
 
-/* ==========================================================================
-   Lật trang: tờ báo của phần trước lùi ra trên mặt bàn, trang phải lật qua
-   gáy giữa; mặt sau của trang chính là nửa trái của trang mở chương mới
-   ========================================================================== */
-.turn { position: relative; }
-.turn-spread { position: relative; }
-.pg, .turn-leaf, .spine, .cast { display: none; }
-.turn[data-prev="paper"] { --leaf-bg: var(--paper); --leaf-ink: rgba(27, 34, 22, 0.13); --leaf-strong: rgba(27, 34, 22, 0.6); --edge: #d6cdb6; }
-.turn[data-prev="warm"] { --leaf-bg: var(--paper-warm); --leaf-ink: rgba(27, 34, 22, 0.14); --leaf-strong: rgba(27, 34, 22, 0.6); --edge: #cdc1a5; }
-.turn[data-prev="moss"] { --leaf-bg: var(--moss); --leaf-ink: rgba(242, 236, 219, 0.14); --leaf-strong: rgba(242, 236, 219, 0.7); --edge: #3e4a29; }
-.turn[data-prev="forest"] { --leaf-bg: var(--forest); --leaf-ink: rgba(242, 236, 219, 0.14); --leaf-strong: rgba(242, 236, 219, 0.7); --edge: #1c4126; }
-
-.anim .chapter:has(> .turn), .anim .ending:has(> .turn) { padding-top: 0; }
-.anim .turn { height: 220vh; height: 220svh; } /* margin-bottom âm do JS tính theo dải trống dưới trang mở */
-.anim .turn-stage {
-  position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
-  perspective: 1800px;
-  /* mặt bàn lộ ra khi tờ báo lùi xa */
-  background: radial-gradient(110% 90% at 50% 35%, #3b4530, #161b12 78%);
-}
-.anim .turn-spread {
-  position: absolute; inset: 0;
-  display: flex; align-items: center;
-  background: var(--bg);
-  transform-style: preserve-3d; transform-origin: 50% 55%;
-  border-radius: 4px;
-  /* mép các trang giấy xếp chồng bên phải và bóng tờ báo trên bàn */
-  box-shadow: 3px 1px 0 -1px var(--edge), 6px 2px 0 -2px var(--edge), 9px 3px 0 -3px var(--edge),
-    0 50px 100px -30px rgba(0, 0, 0, 0.7);
-}
-.anim .turn-spread > .opener, .anim .turn-spread > .intro-head { width: 100%; margin-bottom: 0; }
-
-.anim .pg--left {
-  display: block; position: absolute; top: 0; bottom: 0; left: 0; width: 50%; z-index: 3;
-  background: var(--leaf-bg); border-radius: 4px 0 0 4px;
-}
-.anim .turn-leaf {
-  display: block; position: absolute; top: 0; bottom: 0; left: 50%; width: 50%; z-index: 5;
-  transform-origin: 0% 50%; transform-style: preserve-3d; will-change: transform;
-}
-.leaf-face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.leaf-front { background: var(--leaf-bg); border-radius: 0 4px 4px 0; }
-.leaf-back { transform: rotateY(180deg); background: var(--bg); display: flex; align-items: center; border-radius: 4px 0 0 4px; }
-.leaf-clone { flex: none; width: 200%; }
-.leaf-clone > .opener, .leaf-clone > .intro-head { width: 100%; margin-bottom: 0; }
-/* ánh sáng trên trang đang lật: tối dần về phía gáy, ánh lên ở giữa */
-.leaf-front::after, .leaf-back::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
-.leaf-front::after {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0) 28%, rgba(255, 255, 255, 0.14) 62%, rgba(0, 0, 0, 0.12));
-  opacity: calc(var(--f, 0) * 2.2);
-}
-.leaf-back::after {
-  background: linear-gradient(270deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0) 30%, rgba(255, 255, 255, 0.1) 65%, rgba(0, 0, 0, 0.1));
-  opacity: calc((1 - var(--f, 0)) * 2.2);
-}
-/* bóng trang đổ xuống hai bên và nếp gáy */
-.anim .cast { display: block; position: absolute; top: 0; bottom: 0; width: 50%; z-index: 4; pointer-events: none; }
-.anim .cast--r { left: 50%; background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 85%); opacity: calc((0.5 - var(--f, 0)) * 2.4); }
-.anim .cast--l { left: 0; background: linear-gradient(270deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 85%); opacity: calc((var(--f, 0) - 0.5) * 2.4); }
-.anim .spine {
-  display: block; position: absolute; top: 0; bottom: 0; left: 50%; width: 120px; margin-left: -60px; z-index: 6; pointer-events: none;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.14) 40%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0));
-}
-.turn.is-done .pg, .turn.is-done .turn-leaf, .turn.is-done .cast, .turn.is-done .spine { visibility: hidden; }
-
-/* trang báo vẽ bằng CSS: số trang, tít, ảnh chấm in, cột chữ */
-.np {
-  position: absolute; inset: clamp(1.4rem, 6vh, 3.4rem) clamp(1rem, 3vw, 2.8rem);
-  display: grid; grid-template-rows: auto auto 1fr; gap: clamp(0.8rem, 2.4vh, 1.6rem);
-  color: var(--leaf-strong);
-}
-.np-folio {
-  display: flex; justify-content: space-between; gap: 1rem;
-  font: 600 0.82rem/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase;
-  padding-bottom: 0.7rem; border-bottom: 2px solid currentColor;
-}
-.np-head { display: grid; gap: 0.55rem; }
-.np-head i { display: block; height: clamp(14px, 3vh, 26px); border-radius: 2px; background: currentColor; opacity: 0.5; }
-.np-head i.s { width: 64%; }
-.np-body { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.8rem, 2vw, 1.4rem); min-height: 0; }
-.np--right .np-body { grid-template-columns: 1.3fr 1fr; }
-.np-photo {
-  border-radius: 2px;
-  background: radial-gradient(circle, var(--leaf-strong) 0 1.2px, transparent 1.7px) 0 0 / 7px 7px, var(--leaf-ink);
-  opacity: 0.8;
-}
-.np-cols {
-  background:
-    repeating-linear-gradient(90deg, transparent 0 calc(50% - 0.6rem), var(--leaf-bg) calc(50% - 0.6rem) 50%),
-    repeating-linear-gradient(var(--leaf-ink) 0 5px, transparent 5px 20px);
-}
-@media (max-width: 900px) {
-  .np { inset: 1.2rem 0.9rem; }
-  .np-folio { font-size: 0.62rem; letter-spacing: 0.06em; }
-  .np-body, .np--right .np-body { grid-template-columns: 1fr; grid-template-rows: 38% 1fr; }
-  .np-cols { background: repeating-linear-gradient(var(--leaf-ink) 0 4px, transparent 4px 16px); }
-  .anim .spine { width: 60px; margin-left: -30px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .pg, .turn-leaf, .spine, .cast { display: none !important; }
-}
 
 /* ==========================================================================
    Chữ dẫn đầu chương kèm ảnh in
@@ -1293,7 +1192,6 @@ h2 {
 }
 
 /* Khối đứng ngay sau trang mở chương không cần lề trên riêng */
-.turn + .stat-strip, .turn + .prose, .turn + .lead-solo { margin-top: 0; }
 
 /* Video phỏng vấn người làm ngành báo + ảnh đặt cạnh */
 .video-duo {
