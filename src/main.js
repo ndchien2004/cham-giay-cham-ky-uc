@@ -612,7 +612,7 @@ if (animate) {
       ease: "none",
       scrollTrigger: {
         trigger: sec,
-        start: "top top",
+        start: "center center",
         end: () => "+=" + dist(),
         pin: true,
         scrub: 0.6,

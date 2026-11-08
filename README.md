@@ -3,6 +3,11 @@
 Trang longform cuộn dọc về cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số,
 dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại Hà Nội năm 2026 (288 người).
 
+Bố cục theo bản nội dung mới: Mở đầu · 01 Nối (đời sống) · 02 Thưa (79,5%) · 03 Đổi (người trẻ,
+khoảng cách thế hệ) · 04 Chậm (đọc chậm, ký ức, người bán báo) · 05 Mở (Điện Biên Phủ, tương lai) · Kết.
+Ngoài biểu đồ còn có các khối thông tin: dải số (`.stat-strip`), ba phương tiện (`.trio`), hai cột
+đối chiếu (`.versus`), thẻ ký ức (`.memory`), lưới giá trị (`.value-grid`).
+
 Ý tưởng thiết kế: **trang nhất bằng giấy**. Bài mở bằng một trang nhất với xấp ảnh in đặt chéo
 và dải số liệu chạy ngang. Bảng màu: be (giấy), xanh lá (màu nhấn) và xanh rêu (nền các chương).
 

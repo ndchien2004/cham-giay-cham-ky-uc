@@ -293,7 +293,7 @@ h2 {
 .menu-list i { font: 500 0.92rem/1 var(--f-mono); font-style: normal; color: var(--ink-3); }
 .menu-list b {
   /* co theo cả chiều rộng lẫn chiều cao để 7 mục vừa một màn hình */
-  font: 500 clamp(1.3rem, min(0.9rem + 2.4vw, 5.6vh), 3.2rem)/1.12 var(--f-serif);
+  font: 500 clamp(1.05rem, min(0.8rem + 1.5vw, 4.2vh), 2.3rem)/1.18 var(--f-serif);
   font-variation-settings: "opsz" 60; letter-spacing: -0.015em; text-wrap: balance;
   transition: color 0.3s, transform 0.6s var(--ease);
 }
@@ -821,7 +821,7 @@ h2 {
   position: relative; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem);
   width: max-content; padding: 2rem var(--gutter) 5rem;
 }
-.anim .hscroll-track { min-height: 100vh; min-height: 100svh; padding-top: calc(var(--header-h) + 2rem); }
+.anim .hscroll-track { padding-top: 2rem; }
 .hpanel { flex: none; width: min(78vw, 420px); scroll-snap-align: center; }
 .hpanel--intro { width: min(84vw, 520px); }
 .hpanel-title {
@@ -869,7 +869,7 @@ h2 {
 .gen { font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.45rem); line-height: 1.55; }
 .gen .kicker { margin-bottom: 0.8rem; color: var(--accent); }
 .gen-line { margin-top: 1rem; font: italic 500 clamp(1.35rem, 1rem + 1vw, 2rem)/1.3 var(--f-serif); }
-.gen--now { text-align: right; }
+.gen--now { text-align: left; }
 .gen-photo .media-frame { aspect-ratio: 4 / 5; }
 .gen-photo .media-frame img { height: 100%; object-fit: cover; }
 
@@ -993,7 +993,7 @@ h2 {
 
   .footer-cols { grid-template-columns: 1fr 1fr; }
   .menu-list a { grid-template-columns: 2.2rem minmax(0, 1fr); gap: 0.8rem; }
-  .menu-list b { font-size: clamp(1.1rem, min(5.6vw, 4.2vh), 2rem); }
+  .menu-list b { font-size: clamp(0.98rem, min(4.6vw, 3.1vh), 1.5rem); }
   .menu-film { padding: 0.7rem 1rem; }
   .brand-logo { width: 30px; height: 30px; }
   .opener-num { top: 0.1em; }
@@ -1145,4 +1145,103 @@ h2 {
   .intro-split { grid-template-columns: 1fr; gap: 2.2rem; }
   .cover-print { width: min(80%, 320px); }
   .cover-print--wide { width: 92%; }
+}
+
+/* ==========================================================================
+   Căn đều hai lề cho đoạn văn
+   ========================================================================== */
+.prose p, .prose--lead p, .lead, .gen p, .step-card p, .compare-notes p,
+.versus p, .survey figcaption {
+  text-align: justify; text-justify: inter-word; hyphens: auto;
+}
+.prose .side-kicker, .gen .kicker, .versus .tag { text-align: left; }
+
+/* ==========================================================================
+   Khối thông tin trong bài
+   ========================================================================== */
+/* Dải số liệu */
+.stat-strip {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem;
+  max-width: var(--max); margin: clamp(1.5rem, 3vw, 2.5rem) auto clamp(2rem, 4vw, 3rem); padding: 0 var(--gutter);
+}
+.stat-strip--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stat-strip > div { padding: clamp(1rem, 2vw, 1.5rem); background: var(--card); border-top: 3px solid var(--line); border-radius: 0 0 16px 16px; }
+.stat-strip > .is-key { border-top-color: var(--accent); }
+.stat-strip b { display: block; font: 800 clamp(2.2rem, 1.5rem + 2.2vw, 3.6rem)/1 var(--f-cond); font-stretch: 75%; letter-spacing: -0.01em; color: var(--fg); }
+.stat-strip .is-key b { color: var(--accent); }
+.stat-strip span { display: block; margin-top: 0.55rem; font-size: clamp(1rem, 0.92rem + 0.3vw, 1.2rem); line-height: 1.35; color: var(--muted); }
+
+/* Ba phương tiện */
+.trio {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem;
+  max-width: var(--max); margin: clamp(1.5rem, 3vw, 2.5rem) auto clamp(2rem, 4vw, 3rem); padding: 0 var(--gutter);
+}
+.trio article { display: grid; gap: 0.6rem; align-content: start; padding: clamp(1.2rem, 2.4vw, 1.9rem); border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
+.trio .is-key { background: var(--accent); color: var(--bg); border-color: transparent; }
+.trio .tag, .versus .tag { font: 600 0.82rem/1.3 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: left; }
+.trio .is-key .tag { color: inherit; opacity: 0.85; }
+.trio h4 { font: 800 clamp(1.7rem, 1.2rem + 1.4vw, 2.6rem)/0.95 var(--f-cond); font-stretch: 75%; text-transform: uppercase; }
+.trio p:not(.tag) { font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.4rem); line-height: 1.4; }
+
+/* Hai cột đối chiếu */
+.versus {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  max-width: var(--max); margin: clamp(1.5rem, 3vw, 2.5rem) auto clamp(2rem, 4vw, 3rem); padding: 0 var(--gutter);
+}
+.versus > div { padding: clamp(1.3rem, 2.6vw, 2.2rem); background: var(--card); border: 1px solid var(--line); }
+.versus > div:first-child { border-radius: var(--radius) 0 0 var(--radius); border-right: 0; }
+.versus > div:last-child { border-radius: 0 var(--radius) var(--radius) 0; background: color-mix(in srgb, var(--accent) 12%, var(--card)); }
+.versus-num { display: block; margin: 0.6rem 0 0.8rem; font: 800 clamp(2.4rem, 1.6rem + 2.6vw, 4rem)/0.95 var(--f-cond); font-stretch: 72%; color: var(--accent); }
+.versus p:not(.tag) { font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.4rem); line-height: 1.45; }
+.versus ul { margin-top: 0.8rem; }
+.versus li { position: relative; padding: 0.75rem 0 0.75rem 1.4rem; border-top: 1px solid var(--line); font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem); line-height: 1.4; }
+.versus li::before { content: ""; position: absolute; left: 0; top: 1.3rem; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+/* Thẻ ký ức dán băng dính */
+.memory {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.4vw, 1.8rem);
+  max-width: var(--max); margin: clamp(2rem, 4vw, 3rem) auto; padding: 0 var(--gutter);
+}
+.memory li {
+  position: relative; padding: 1.5rem 1.3rem 1.6rem;
+  background: #fbf8ef; color: var(--ink);
+  box-shadow: 0 1px 0 rgba(27, 34, 22, 0.06), 0 18px 30px -20px rgba(27, 34, 22, 0.5);
+  transform: rotate(var(--r));
+}
+.memory li::before {
+  content: ""; position: absolute; top: -11px; left: 50%; width: 70px; height: 22px; margin-left: -35px;
+  background: rgba(196, 210, 140, 0.8); transform: rotate(-3deg);
+}
+.memory span { font: 600 0.82rem/1 var(--f-mono); letter-spacing: 0.1em; color: var(--leaf); }
+.memory p { margin-top: 0.7rem; font: italic 500 clamp(1.15rem, 1rem + 0.5vw, 1.45rem)/1.35 var(--f-serif); }
+
+/* Lưới giá trị của trang giấy */
+.value-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem;
+  max-width: var(--max); margin: clamp(1.5rem, 3vw, 2.5rem) auto; padding: 0 var(--gutter);
+}
+.value-grid li {
+  display: flex; align-items: baseline; gap: 0.9rem; padding: clamp(1rem, 2.2vw, 1.6rem) clamp(1rem, 2vw, 1.4rem);
+  border-radius: 14px; background: var(--card); border: 1px solid var(--line);
+  font: 800 clamp(1.5rem, 1.1rem + 1.4vw, 2.4rem)/1 var(--f-cond); font-stretch: 75%; text-transform: uppercase;
+}
+.value-grid span { font: 500 0.85rem/1 var(--f-mono); color: var(--accent); }
+.tech-chips {
+  display: flex; flex-wrap: wrap; gap: 0.7rem;
+  max-width: calc(var(--measure) + var(--gutter) * 2); margin: -0.4rem auto 2rem; padding: 0 var(--gutter);
+}
+.tech-chips li { padding: 0.65rem 1.1rem; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); font: 700 1.05rem/1 var(--f-mono); letter-spacing: 0.06em; }
+
+@media (max-width: 900px) {
+  .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat-strip--3 { grid-template-columns: 1fr; }
+  .trio { grid-template-columns: 1fr; }
+  .versus { grid-template-columns: 1fr; }
+  .versus > div:first-child { border-radius: var(--radius) var(--radius) 0 0; border-right: 1px solid var(--line); border-bottom: 0; }
+  .versus > div:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+  .memory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .value-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .memory { grid-template-columns: 1fr; }
 }
