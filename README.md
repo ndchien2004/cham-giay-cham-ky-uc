@@ -4,7 +4,7 @@ Trang longform cuộn dọc về cộng đồng người đọc báo giấy gi�
 dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại khu vực Hà Nội năm 2026 (288 người).
 
 Bố cục theo bản nội dung mới: Mở đầu · 01 Nối (đời sống) · 02 Thưa (79,5%) · 03 Đổi (người trẻ,
-khoảng cách thế hệ) · 04 Chậm (đọc chậm, ký ức, người bán báo) · 05 Mở (Điện Biên Phủ, tương lai) · Kết.
+khoảng cách thế hệ) · 04 Chậm (đọc chậm, ký ức, người bán báo) · 05 Tương lai (ví dụ phụ san Điện Biên Phủ trong ô `.example`) · Kết.
 Ngoài biểu đồ còn có các khối thông tin: dải số (`.stat-strip`), ba phương tiện (`.trio`), hai cột
 đối chiếu (`.versus`), thẻ ký ức (`.memory`), lưới giá trị (`.value-grid`).
 

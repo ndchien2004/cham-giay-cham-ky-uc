@@ -1316,3 +1316,12 @@ h2 {
 .opener--facts .opener-toc { max-width: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; border-top: 0; }
 .opener--facts .opener-toc li { border-top: 2px solid var(--line); border-bottom: 0; padding-top: 1rem; display: grid; gap: 0.4rem; }
 .prose--lead p { text-align: left; text-wrap: balance; }
+
+/* Ô ví dụ nhỏ trong bài */
+.example { max-width: calc(var(--measure) + var(--gutter) * 2); margin: clamp(1.5rem, 3vw, 2.5rem) auto; padding: 0 var(--gutter); }
+.example-card {
+  padding: clamp(1.2rem, 2.5vw, 1.8rem) clamp(1.2rem, 3vw, 2.2rem);
+  background: var(--card); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0;
+}
+.example-card .kicker { color: var(--accent); }
+.example-card p:not(.kicker) { margin-top: 0.7rem; font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem); line-height: 1.55; text-align: justify; }
