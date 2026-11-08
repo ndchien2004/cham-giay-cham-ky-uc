@@ -1308,3 +1308,11 @@ h2 {
   .duo-photo { width: 86%; }
 }
 .video-duo:has(.duo-photo[hidden]) { grid-template-columns: 1fr; max-width: calc(1100px + var(--gutter) * 2); }
+
+/* Phần 5: trang mở chương một cột */
+.opener--facts { grid-template-columns: minmax(0, 1fr); }
+.opener--facts .opener-copy h2 { max-width: 26ch; font-size: clamp(2.2rem, 1.4rem + 3vw, 4.4rem); }
+.opener--facts .opener-sub { max-width: 48ch; }
+.opener--facts .opener-toc { max-width: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; border-top: 0; }
+.opener--facts .opener-toc li { border-top: 2px solid var(--line); border-bottom: 0; padding-top: 1rem; display: grid; gap: 0.4rem; }
+.prose--lead p { text-align: left; text-wrap: balance; }
