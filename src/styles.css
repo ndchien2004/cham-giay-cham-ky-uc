@@ -1294,3 +1294,17 @@ h2 {
 
 /* Khối đứng ngay sau trang mở chương không cần lề trên riêng */
 .turn + .stat-strip, .turn + .prose, .turn + .lead-solo { margin-top: 0; }
+
+/* Video phỏng vấn người làm ngành báo + ảnh đặt cạnh */
+.video-duo {
+  display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center;
+  max-width: calc(1320px + var(--gutter) * 2); margin: clamp(2rem, 4.5vw, 4rem) auto; padding: 0 var(--gutter);
+}
+.video-duo .video-slot { margin: 0; padding: 0; max-width: none; }
+.duo-photo { width: 100%; }
+.duo-photo img { aspect-ratio: 3 / 2; object-fit: cover; }
+@media (max-width: 900px) {
+  .video-duo { grid-template-columns: 1fr; }
+  .duo-photo { width: 86%; }
+}
+.video-duo:has(.duo-photo[hidden]) { grid-template-columns: 1fr; max-width: calc(1100px + var(--gutter) * 2); }

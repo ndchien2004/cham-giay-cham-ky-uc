@@ -69,7 +69,7 @@ Khi để trống, khối hiện "Video sẽ sớm được cập nhật".
 
 Video quay dọc: thêm `data-ratio="9 / 16"`. Ảnh bìa: `data-poster="./images/..."`.
 
-Trang có một video duy nhất: phóng sự "Văn hóa đọc báo giấy" (`#phong-su`, Phần 03), phát từ YouTube (chế độ không công khai).
+Trang có 4 video phỏng vấn nhúng từ Google Drive: Độc giả báo giấy (Phần 2), Người trẻ (Phần 3), Người bán báo (Phần 4), Người làm ngành báo (Phần 5, kèm một ảnh từ Drive). File trên Drive phải để "Bất kỳ ai có đường liên kết".
 
 ## Khả năng truy cập
 
@@ -79,4 +79,3 @@ Trang có một video duy nhất: phóng sự "Văn hóa đọc báo giấy" (`#
 
 ## Việc còn lại
 
-- Giữ video YouTube ở chế độ "Không công khai" (không để "Riêng tư") và bật "Cho phép nhúng".
