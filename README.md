@@ -44,7 +44,6 @@ public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 | Phần 02 | Kéo so sánh Giấy ↔ Màn hình | Dùng được bằng bàn phím (thanh trượt) |
 | Phần 03 | Hành trình một tờ báo | Cuộn ngang có ghim |
 | Phần 04 | 132 ô người trẻ | 4 bước: từng đọc → tần suất → 7 người |
-| Phần 04 | Phụ san 3,21 m | Cuộn ngang có thước đo cm (hình minh họa mô phỏng) |
 | Phần 05 | Ba trụ cột | Thẻ có ánh sáng theo con trỏ |
 | Kết | Tờ báo gập lại | Theo cuộn |
 

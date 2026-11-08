@@ -438,17 +438,6 @@ $$(".pillar").forEach((card) => {
   });
 });
 
-/* Thước đo phụ san: nhãn mỗi 50 cm */
-const ruler = $(".pano-ruler");
-if (ruler) {
-  [0, 50, 100, 150, 200, 250, 300, 321].forEach((cm) => {
-    const s = document.createElement("span");
-    s.style.left = (cm / 321) * 100 + "%";
-    s.textContent = cm === 321 ? "321 cm" : cm;
-    ruler.appendChild(s);
-  });
-}
-
 /* ==========================================================================
    Tiện ích animation
    ========================================================================== */
@@ -493,8 +482,6 @@ function countUp(el) {
    ========================================================================== */
 if (!animate) {
   $(".journey .hscroll-track")?.style.setProperty("--p", 1);
-  const rc = $("#rulerCount");
-  if (rc) rc.textContent = "321";
 }
 
 if (animate) {
@@ -608,8 +595,6 @@ if (animate) {
     const track = $(".hscroll-track", sec);
     const dist = () => Math.max(0, track.scrollWidth - window.innerWidth);
     const isJourney = sec.classList.contains("journey");
-    const pano = $(".pano", sec);
-    const counter = $("#rulerCount");
     if (isJourney) track.style.setProperty("--p", 0);
     gsap.to(track, {
       x: () => -dist(),
@@ -625,11 +610,6 @@ if (animate) {
         refreshPriority: 1,
         onUpdate: (self) => {
           if (isJourney) track.style.setProperty("--p", self.progress.toFixed(4));
-          if (pano && counter) {
-            const r = pano.getBoundingClientRect();
-            const cm = Math.round(Math.min(1, Math.max(0, (window.innerWidth * 0.8 - r.left) / r.width)) * 321);
-            counter.textContent = cm;
-          }
         },
       },
     });
