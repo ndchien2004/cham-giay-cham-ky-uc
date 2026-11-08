@@ -586,7 +586,12 @@ if (animate) {
   gsap.from(".survey-seg", { scaleX: 0, autoAlpha: 0, stagger: 0.15, duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: ".survey-bar", start: "top 88%", once: true } });
 
   /* ----- Mẩu báo cắt, không gian đọc, trụ cột ----- */
-  gsap.from(".clips li", { y: 60, rotation: (i) => (i % 2 ? 14 : -14), autoAlpha: 0, stagger: 0.08, duration: 1.1, ease: "back.out(1.6)", scrollTrigger: { trigger: ".clips", start: "top 88%", once: true } });
+  // Ghi rõ điểm cuối (góc --r của từng mẩu); xong thì trả transform lại cho CSS để hiệu ứng hover chạy
+  gsap.fromTo(".clips li", { y: 60, rotation: (i) => (i % 2 ? 14 : -14), autoAlpha: 0 }, {
+    y: 0, rotation: (i, el) => parseFloat(el.style.getPropertyValue("--r")) || 0, autoAlpha: 1,
+    stagger: 0.08, duration: 1.1, ease: "back.out(1.6)", clearProps: "transform",
+    scrollTrigger: { trigger: ".clips", start: "top 88%", once: true },
+  });
   gsap.from(".spaces li", { x: -60, autoAlpha: 0, stagger: 0.12, duration: 1.1, ease: "expo.out", scrollTrigger: { trigger: ".spaces", start: "top 85%", once: true } });
   gsap.from(".pillar", { y: 80, rotationX: -18, transformPerspective: 900, transformOrigin: "50% 100%", autoAlpha: 0, stagger: 0.12, duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: ".pillars", start: "top 85%", once: true } });
   gsap.from(".marquee", { autoAlpha: 0, y: 30, duration: 1.2, ease: "expo.out", scrollTrigger: { trigger: ".marquee", start: "top 90%", once: true } });
