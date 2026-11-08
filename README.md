@@ -3,8 +3,8 @@
 Trang longform cuộn dọc về cộng đồng người đọc báo giấy giữa dòng chảy truyền thông số,
 dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại Hà Nội năm 2026 (288 người).
 
-Ý tưởng thiết kế: **giấy báo × điểm ảnh**. Bài mở bằng một màn hình điện thoại đầy thông báo,
-cuộn xuống thì một trang nhất bằng giấy "mở" ra. Các chương xen kẽ ba nền: giấy, vàng và đỏ son.
+Ý tưởng thiết kế: **trang nhất bằng giấy**. Bài mở bằng một trang nhất với xấp ảnh in đặt chéo
+và dải số liệu chạy ngang. Bảng màu: be (giấy), xanh lá (màu nhấn) và xanh rêu (nền các chương).
 
 ## Công nghệ
 
@@ -27,7 +27,7 @@ npm run preview  # xem bản build
 
 ```
 index.html        Toàn bộ nội dung bài (sửa chữ trực tiếp ở đây)
-src/styles.css    Hệ giao diện: màu/chữ ở :root, token theo tông (.tone-paper/.tone-screen = nền vàng/.tone-red)
+src/styles.css    Hệ giao diện: màu/chữ ở :root, token theo tông (.tone-paper / .tone-warm / .tone-moss / .tone-forest)
 src/main.js       Cuộn mượt, header, mục lục, video, biểu đồ, toàn bộ animation
 public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 ```
@@ -36,7 +36,7 @@ public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 
 | Vị trí | Khối | Ghi chú |
 |---|---|---|
-| Hero | Màn hình → trang nhất | Thông báo bay đi, trang giấy mở theo vòng tròn |
+| Hero | Trang nhất + xấp ảnh in | Tít và ảnh hiện dần; khi cuộn, hai dòng tít trượt ngược chiều, ảnh trôi lệch nhau; dải số liệu chạy ngang |
 | Mở đầu | Thẻ khảo sát 288 = 156 + 132 | Số đếm |
 | Phần 01 | Chồng báo (1 tờ = 10 triệu bản) | Scrollytelling 3 bước: 1,1 tỷ → 250 triệu (−77%) |
 | Phần 02 | 156 ô, mỗi ô một người | 3 bước; có bảng số liệu và tooltip |

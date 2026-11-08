@@ -73,8 +73,8 @@ function refreshTone() {
     return r.top <= probe && r.bottom > probe;
   });
   const tone = el ? el.dataset.tone : "paper";
-  header.classList.toggle("on-sun", tone === "screen");
-  header.classList.toggle("on-red", tone === "red");
+  header.classList.toggle("on-moss", tone === "moss");
+  header.classList.toggle("on-forest", tone === "forest");
 }
 
 function onScroll() {
@@ -415,7 +415,7 @@ onScrollFrame(() => tip.classList.remove("is-visible"));
 /* --------------------------------------------------------------------------
    Băng chữ chạy: nhân bản đủ dài để lặp liền mạch
    -------------------------------------------------------------------------- */
-$$(".marquee-row").forEach((row) => {
+$$(".marquee-row, .ticker-row").forEach((row) => {
   const originals = [...row.children];
   const setW = row.scrollWidth;
   let sets = 1;
@@ -491,56 +491,31 @@ function countUp(el) {
 /* ==========================================================================
    Animation (bỏ qua khi người dùng bật giảm chuyển động)
    ========================================================================== */
-const hero = $(".hero");
 if (!animate) {
-  hero.dataset.tone = "paper";
-  refreshTone();
   $(".journey .hscroll-track")?.style.setProperty("--p", 1);
   const rc = $("#rulerCount");
   if (rc) rc.textContent = "321";
 }
 
 if (animate) {
-  /* ----- Hero: từ màn hình đến trang giấy ----- */
-  const fpBits = [".fp-top", ".fp-deck", ".fp-photo", ".fp-meta"];
-  gsap.set(".fp-line > span", { yPercent: 115, autoAlpha: 0 });
-  gsap.set(fpBits, { autoAlpha: 0, y: 30 });
-  gsap.set(".fp-rule", { scaleX: 0 });
+  /* ----- Hero: trang nhất hiện dần, xấp ảnh in rơi xuống ----- */
+  gsap.set(".fp-line > span", { yPercent: 110 });
+  gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.1 })
+    .from(".fp-top", { autoAlpha: 0, y: -10, duration: 0.8 })
+    .from(".fp-rule", { scaleX: 0, duration: 1.2, stagger: 0.12 }, 0.1)
+    .to(".fp-line > span", { yPercent: 0, duration: 1.2, stagger: 0.12 }, 0.2)
+    .from([".fp-deck", ".fp-meta"], { autoAlpha: 0, y: 24, duration: 1, stagger: 0.1 }, 0.6)
+    .from(".print", { autoAlpha: 0, yPercent: 40, scale: 0.92, duration: 1.3, stagger: 0.12 }, 0.45)
+    .from(".hero-prints figcaption", { autoAlpha: 0, duration: 0.8 }, 1.1)
+    .from(".ticker", { autoAlpha: 0, duration: 0.8 }, 0.9);
 
-  gsap.from(".notif", { autoAlpha: 0, y: 50, scale: 0.88, stagger: 0.09, duration: 1.1, ease: "expo.out", delay: 0.25 });
-  gsap.from(".screen-line", { autoAlpha: 0, y: 30, filter: "blur(12px)", duration: 1.5, ease: "expo.out", delay: 0.1 });
-  gsap.from([".screen-time", ".screen-cue"], { autoAlpha: 0, duration: 1.2, delay: 0.6 });
-
-  const notifs = $$(".notif");
-  gsap.timeline({
-    defaults: { ease: "none" },
-    scrollTrigger: {
-      trigger: hero,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 0.6,
-      onUpdate: (self) => {
-        const t = self.progress > 0.3 ? "paper" : "screen";
-        if (hero.dataset.tone !== t) { hero.dataset.tone = t; refreshTone(); }
-      },
-    },
-  })
-    .to([".screen-time", ".screen-cue"], { autoAlpha: 0, duration: 0.12 }, 0)
-    .to(notifs, {
-      x: (i, el) => Math.sign(parseFloat(el.style.getPropertyValue("--x")) || 1) * window.innerWidth * (0.55 + (i % 3) * 0.12),
-      y: (i, el) => (parseFloat(el.style.getPropertyValue("--y")) || 0) * window.innerHeight * 0.02,
-      rotation: (i) => (i % 2 ? 24 : -24),
-      autoAlpha: 0,
-      filter: "blur(6px)",
-      stagger: 0.02,
-      duration: 0.34,
-    }, 0)
-    .to(".screen-line", { y: -90, scale: 0.92, autoAlpha: 0, duration: 0.24 }, 0.06)
-    .to(".hero-paper", { clipPath: "circle(150% at 50% 55%)", duration: 0.42, ease: "power2.in" }, 0.12)
-    .to(".fp-rule", { scaleX: 1, duration: 0.18, stagger: 0.05 }, 0.46)
-    .to(".fp-line > span", { yPercent: 0, autoAlpha: 1, duration: 0.2, stagger: 0.07, ease: "power3.out" }, 0.5)
-    .to(fpBits, { autoAlpha: 1, y: 0, stagger: 0.04, duration: 0.18 }, 0.62)
-    .to({}, { duration: 0.12 });
+  // Khi cuộn: hai dòng tít trượt ngược chiều, ảnh in trôi lệch nhau
+  const heroST = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
+  gsap.to(".fp-line:not(.fp-line--2) > span", { xPercent: -5, ease: "none", scrollTrigger: heroST });
+  gsap.to(".fp-line--2 > span", { xPercent: 5, ease: "none", scrollTrigger: heroST });
+  $$(".print").forEach((el, i) => {
+    gsap.to(el, { y: [-50, -130, -90][i], rotation: [-10, 5, 12][i], ease: "none", scrollTrigger: heroST });
+  });
 
   /* ----- Tiêu đề: từng chữ hiện lên ----- */
   $$(".split").forEach((el) => {
