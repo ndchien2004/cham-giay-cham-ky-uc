@@ -4,8 +4,7 @@ Trang longform cuộn dọc về cộng đồng người đọc báo giấy gi�
 dựa trên hai cuộc khảo sát của nhóm nghiên cứu tại Hà Nội năm 2026 (288 người).
 
 Ý tưởng thiết kế: **giấy báo × điểm ảnh**. Bài mở bằng một màn hình điện thoại đầy thông báo,
-cuộn xuống thì một trang nhất bằng giấy "mở" ra. Các chương xen kẽ ba chất liệu: giấy (sáng),
-màn hình (tối) và màu in đỏ son.
+cuộn xuống thì một trang nhất bằng giấy "mở" ra. Các chương xen kẽ ba nền: giấy, vàng và đỏ son.
 
 ## Công nghệ
 
@@ -28,7 +27,7 @@ npm run preview  # xem bản build
 
 ```
 index.html        Toàn bộ nội dung bài (sửa chữ trực tiếp ở đây)
-src/styles.css    Hệ giao diện: màu/chữ ở :root, token theo tông (.tone-paper/.tone-screen/.tone-red)
+src/styles.css    Hệ giao diện: màu/chữ ở :root, token theo tông (.tone-paper/.tone-screen = nền vàng/.tone-red)
 src/main.js       Cuộn mượt, header, mục lục, video, biểu đồ, toàn bộ animation
 public/images/    Ảnh (.webp, 2 cỡ cho srcset)
 ```
@@ -76,4 +75,4 @@ Trang có một video duy nhất: phóng sự "Văn hóa đọc báo giấy" (`#
 ## Việc còn lại
 
 - Giữ video YouTube ở chế độ "Không công khai" (không để "Riêng tư") và bật "Cho phép nhúng".
-- Xác nhận nguồn/quyền dùng ảnh (sạp báo: Báo Thanh Niên; trang nhất: Báo Người Lao Động; ảnh còn lại ghi "Tư liệu").
+- Mọi ảnh đang ghi "Ảnh: Sưu tầm".

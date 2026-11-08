@@ -73,7 +73,7 @@ function refreshTone() {
     return r.top <= probe && r.bottom > probe;
   });
   const tone = el ? el.dataset.tone : "paper";
-  header.classList.toggle("on-dark", tone === "screen");
+  header.classList.toggle("on-sun", tone === "screen");
   header.classList.toggle("on-red", tone === "red");
 }
 
