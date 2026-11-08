@@ -33,8 +33,16 @@
   <!-- ================================================================ HEADER -->
   <header class="site-header" id="siteHeader">
     <a class="brand" href="#top" aria-label="Về đầu trang">
-      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="brand-name">Chạm giấy<small>Mega Story · 2026</small></span>
+      <svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <path class="logo-page" d="M10 4.5h13.5L31 12v20.5a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3v-25a3 3 0 0 1 3-3z"/>
+        <path class="logo-fold" d="M23.5 4.5V10a2 2 0 0 0 2 2H31z"/>
+        <rect class="logo-mast" x="11" y="15" width="11" height="3.2" rx="1"/>
+        <rect class="logo-line" x="11" y="21" width="15" height="2" rx="1"/>
+        <rect class="logo-line" x="11" y="26" width="10" height="2" rx="1"/>
+        <circle class="logo-ripple" cx="30" cy="31" r="7.5"/>
+        <circle class="logo-touch" cx="30" cy="31" r="4.2"/>
+      </svg>
+      <span class="brand-name"><b>Chạm giấy</b><em>chạm ký ức</em></span>
     </a>
     <p class="header-now" aria-hidden="true"><span id="nowNum">00</span><span id="nowLabel">Mở đầu</span></p>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
@@ -44,9 +52,12 @@
     <div class="read-progress" aria-hidden="true"><i id="readBar"></i></div>
   </header>
 
-  <nav class="menu" id="menu" aria-label="Mục lục bài viết" hidden>
+  <nav class="menu" id="menu" aria-label="Mục lục bài viết" data-lenis-prevent hidden>
     <div class="menu-inner">
-      <p class="menu-kicker">Mục lục · 12 phút đọc</p>
+      <div class="menu-top">
+        <p class="menu-kicker">Mục lục · 12 phút đọc</p>
+        <a class="menu-film" href="#phong-su"><span class="play-dot" aria-hidden="true"></span>Xem phóng sự</a>
+      </div>
       <ol class="menu-list">
         <li><a href="#mo-dau" data-nav="mo-dau"><i>00</i><b>Mở đầu</b><span>Một tờ báo giữa thời đại màn hình</span></a></li>
         <li><a href="#chapter-1" data-nav="chapter-1"><i>01</i><b>Thưa</b><span>Khi những trang báo dần thưa vắng</span></a></li>
@@ -56,7 +67,6 @@
         <li><a href="#chapter-5" data-nav="chapter-5"><i>05</i><b>Hướng</b><span>Những trang giấy sẽ đi về đâu?</span></a></li>
         <li><a href="#ket" data-nav="ket"><i>06</i><b>Kết</b><span>Điều còn lại sau mỗi trang báo</span></a></li>
       </ol>
-      <a class="menu-film" href="#phong-su"><span class="play-dot" aria-hidden="true"></span>Xem phóng sự</a>
     </div>
   </nav>
 
