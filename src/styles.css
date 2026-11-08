@@ -400,10 +400,10 @@ h2 {
 
 .scrub-text {
   max-width: 62rem; margin: clamp(1.5rem, 3vw, 2.5rem) auto clamp(2rem, 4vw, 3rem); padding: 0 var(--gutter);
-  font: 500 clamp(1.7rem, 1.1rem + 2.2vw, 3.2rem)/1.2 var(--f-serif);
+  font: 500 clamp(1.45rem, 1rem + 1.6vw, 2.5rem)/1.22 var(--f-serif);
   font-variation-settings: "opsz" 72; letter-spacing: -0.02em; text-wrap: pretty;
 }
-.scrub-text--final { text-align: center; margin-top: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0; font-size: clamp(1.35rem, 1rem + 1.3vw, 2.2rem); max-width: 52rem; }
+.scrub-text--final { text-align: center; margin-top: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0; font-size: clamp(1.3rem, 1rem + 1.1vw, 2rem); max-width: 52rem; }
 
 .survey {
   max-width: 64rem; margin: clamp(2rem, 4vw, 3.5rem) auto; padding: clamp(1.4rem, 3vw, 2.6rem);
@@ -834,7 +834,7 @@ h2 {
 /* Trích dẫn nổi bật */
 .pull {
   max-width: 60rem; margin: clamp(2rem, 4.5vw, 3.5rem) auto; padding: 0 var(--gutter);
-  font: italic 400 clamp(1.6rem, 1.1rem + 1.8vw, 2.8rem)/1.25 var(--f-serif);
+  font: italic 400 clamp(1.35rem, 1rem + 1.3vw, 2.2rem)/1.28 var(--f-serif);
   font-variation-settings: "opsz" 72; letter-spacing: -0.015em; text-wrap: balance;
 }
 .pull::before { content: ""; display: block; width: 56px; height: 4px; background: var(--accent); margin-bottom: 1.4rem; }
